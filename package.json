@@ -5,6 +5,7 @@
   "type": "module",
   "bin": { "obra": "src/cli.js" },
   "scripts": {
+    "test": "node test/validar.mjs",
     "exemplos": "node src/cli.js exemplos",
     "teste": "node src/cli.js render roteiros/exemplos/laje-curto.json --rapido --saida saida/teste.mp4"
   },
