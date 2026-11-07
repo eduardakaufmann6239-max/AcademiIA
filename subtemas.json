@@ -1,0 +1,265 @@
+{
+  "_como_usar": "Subtemas curados por pilar. favorito=true entra primeiro na pauta. Marque/desmarque com: node src/cli.js favoritar \"<título>\" | desfavoritar \"<título>\". Adicione com: node src/cli.js subtemas --adicionar \"<título>\" --pilar <pilar>.",
+  "ia": [
+    {
+      "titulo": "Como o ChatGPT escolhe a próxima palavra?",
+      "favorito": true
+    },
+    {
+      "titulo": "Como uma IA aprende? (treinamento e erro)",
+      "favorito": true
+    },
+    {
+      "titulo": "O que é uma 'alucinação' de IA e por que acontece",
+      "favorito": true
+    },
+    {
+      "titulo": "Como o algoritmo do seu feed decide o que você vê"
+    },
+    {
+      "titulo": "Como o reconhecimento facial funciona — e onde erra"
+    },
+    {
+      "titulo": "Deepfakes: como são feitos e como identificar"
+    },
+    {
+      "titulo": "IA vai roubar empregos? O que os estudos realmente mostram"
+    },
+    {
+      "titulo": "Como um carro autônomo 'enxerga' a rua"
+    }
+  ],
+  "economia": [
+    {
+      "titulo": "Por que tudo fica mais caro? (inflação)",
+      "favorito": true
+    },
+    {
+      "titulo": "Juros compostos: o 'milagre' e a armadilha",
+      "favorito": true
+    },
+    {
+      "titulo": "Como o Plano Real acabou com a hiperinflação",
+      "favorito": true
+    },
+    {
+      "titulo": "Por que o dólar sobe e desce?"
+    },
+    {
+      "titulo": "Como uma empresa de app ganha dinheiro sendo 'grátis'"
+    },
+    {
+      "titulo": "O que é o PIB e o que ele não mede"
+    },
+    {
+      "titulo": "Como funciona a bolsa de valores"
+    },
+    {
+      "titulo": "Por que imprimir dinheiro não deixa um país rico"
+    }
+  ],
+  "neurociencia": [
+    {
+      "titulo": "Seu cérebro engana você (percepção)",
+      "favorito": true
+    },
+    {
+      "titulo": "Por que você esquece o que acabou de ler (curva do esquecimento)",
+      "favorito": true
+    },
+    {
+      "titulo": "Como o sono organiza a memória",
+      "favorito": true
+    },
+    {
+      "titulo": "Dopamina: não é o 'hormônio do prazer'"
+    },
+    {
+      "titulo": "Vieses: por que decidimos mal sob pressão"
+    },
+    {
+      "titulo": "Como se formam os hábitos"
+    },
+    {
+      "titulo": "Multitarefa existe? O que acontece com a atenção"
+    },
+    {
+      "titulo": "Neuroplasticidade: o cérebro muda com o que você faz"
+    }
+  ],
+  "seguranca": [
+    {
+      "titulo": "Como funciona o golpe do Pix falso (engenharia social)",
+      "favorito": true
+    },
+    {
+      "titulo": "Por que sua senha forte não basta (vazamentos e 2FA)",
+      "favorito": true
+    },
+    {
+      "titulo": "Como o phishing engana até gente experiente",
+      "favorito": true
+    },
+    {
+      "titulo": "O que a criptografia de ponta a ponta realmente protege"
+    },
+    {
+      "titulo": "Como os seus dados viram produto"
+    },
+    {
+      "titulo": "Gestão de riscos: probabilidade × impacto"
+    },
+    {
+      "titulo": "Como funciona um ataque de ransomware (e como se proteger)"
+    },
+    {
+      "titulo": "Wi-Fi público: o que pode dar errado"
+    }
+  ],
+  "escola": [
+    {
+      "titulo": "Por que o céu é azul?",
+      "favorito": true
+    },
+    {
+      "titulo": "Fotossíntese em 60 segundos",
+      "favorito": true
+    },
+    {
+      "titulo": "Teorema de Pitágoras: de onde vem e para que serve",
+      "favorito": true
+    },
+    {
+      "titulo": "Por que a água ferve em temperatura menor no alto da montanha"
+    },
+    {
+      "titulo": "DNA: como 4 letras descrevem um ser vivo"
+    },
+    {
+      "titulo": "Revolução Industrial: o que mudou de verdade"
+    },
+    {
+      "titulo": "Por que existem as estações do ano (não é a distância do Sol)",
+      "favorito": false
+    },
+    {
+      "titulo": "Figuras de linguagem que você usa sem perceber"
+    }
+  ],
+  "sistemas": [
+    {
+      "titulo": "Como o dinheiro circula na economia?",
+      "favorito": true
+    },
+    {
+      "titulo": "Como funciona o sistema imunológico?",
+      "favorito": true
+    },
+    {
+      "titulo": "Como funciona o sistema político brasileiro?",
+      "favorito": true
+    },
+    {
+      "titulo": "Como funciona o sistema operacional de um computador?"
+    },
+    {
+      "titulo": "Como a internet leva uma mensagem de um lado ao outro do mundo"
+    },
+    {
+      "titulo": "Como funciona o sistema educacional brasileiro?"
+    },
+    {
+      "titulo": "Como uma empresa organiza seus departamentos?"
+    },
+    {
+      "titulo": "Ciclos de feedback: por que alguns problemas se reforçam"
+    }
+  ],
+  "enem": [
+    {
+      "titulo": "Simulado relâmpago: porcentagem (aumento seguido de desconto)",
+      "favorito": true
+    },
+    {
+      "titulo": "Redação nota 1000: como montar a proposta de intervenção",
+      "favorito": true
+    },
+    {
+      "titulo": "ENEM em 1 minuto: ecologia — cadeia alimentar e energia",
+      "favorito": true
+    },
+    {
+      "titulo": "Por que essa alternativa está errada? Interpretação de gráficos"
+    },
+    {
+      "titulo": "Conexões ENEM: desigualdade (Economia + Geografia + Sociologia)"
+    },
+    {
+      "titulo": "Questão comentada: estequiometria sem decoreba"
+    },
+    {
+      "titulo": "Estratégia de prova: como administrar o tempo no 2º dia"
+    },
+    {
+      "titulo": "Atualidades: mudanças climáticas no ENEM"
+    }
+  ],
+  "medicina_chinesa": [
+    {
+      "titulo": "Yin e yang: o que a filosofia chinesa quer dizer com equilíbrio",
+      "favorito": true
+    },
+    {
+      "titulo": "Acupuntura: o que a tradição diz e o que os estudos mostram",
+      "favorito": true
+    },
+    {
+      "titulo": "Da artemísia ao Nobel: como uma erva chinesa virou remédio contra a malária",
+      "favorito": true
+    },
+    {
+      "titulo": "Tai chi: o que se sabe sobre equilíbrio e prevenção de quedas"
+    },
+    {
+      "titulo": "Os cinco elementos: como a MTC organiza o mundo"
+    },
+    {
+      "titulo": "Ervas tradicionais: quando o 'natural' pode fazer mal"
+    },
+    {
+      "titulo": "Meridianos e qi: conceito tradicional versus anatomia"
+    },
+    {
+      "titulo": "Qigong e respiração: o que há de evidência"
+    }
+  ],
+  "interdisciplinar": [
+    {
+      "titulo": "Por que o GPS precisa da teoria da relatividade",
+      "favorito": true
+    },
+    {
+      "titulo": "Como a peste negra mudou a economia da Europa",
+      "favorito": true
+    },
+    {
+      "titulo": "A invenção da prensa e a primeira 'explosão de informação'",
+      "favorito": true
+    },
+    {
+      "titulo": "Mudanças climáticas: Química + Biologia + Geografia"
+    },
+    {
+      "titulo": "Como o café moldou a história do Brasil"
+    },
+    {
+      "titulo": "Matemática das epidemias: o que é o R0"
+    },
+    {
+      "titulo": "Por que o petróleo mexe com guerras e preços"
+    },
+    {
+      "titulo": "A história do zero"
+    }
+  ]
+}

@@ -1,0 +1,82 @@
+{
+  "titulo": "Por que o golpe do link funciona até com gente esperta",
+  "pilar": "seguranca",
+  "serie": "como_funciona",
+  "nivel": "basico",
+  "formato": "curto",
+  "disciplinas": ["Segurança digital", "Psicologia"],
+  "publico": "público geral",
+  "pergunta_central": "Por que pessoas atentas também caem em phishing?",
+  "loop_aberto": "Qual é a 'falha' que o golpista explora, se não é a tecnologia?",
+  "legenda_post": "O phishing não ataca o seu computador: ataca o seu cérebro com pressa, medo e autoridade. A defesa é um hábito simples: parar e checar pelo canal oficial. Salve e mande para quem você quer proteger.",
+  "hashtags": ["#segurancadigital", "#golpe", "#phishing", "#engenhariasocial", "#privacidade", "#conhecimentoexplicado"],
+  "fontes": ["CERT.br — Cartilha de Segurança para Internet: fascículo 'Golpes na Internet' (cartilha.cert.br)", "Cialdini, R. — As Armas da Persuasão (princípios de autoridade e escassez)", "Verizon — Data Breach Investigations Report (elemento humano nas violações)"],
+  "cenas": [
+    {
+      "id": "c1", "etapa": "gancho", "tecnica": "surpresa",
+      "narracao": "O golpe do link não hackeia seu celular. *Hackeia você*.",
+      "texto_tela": "Hackeia você",
+      "camera": { "alvo": [0, 2.4, 0], "distancia": 7, "distancia_fim": 6, "elevacao": 12, "azimute": [-30, 0] },
+      "elementos": [
+        { "id": "cad", "tipo": "cadeado", "posicao": [0, 2.4, 0], "escala": 1.3, "abrir_em": 1.6, "cor": "#f2c14e" }
+      ]
+    },
+    {
+      "id": "c2", "etapa": "curiosidade", "tecnica": "identificacao",
+      "narracao": "Chega a mensagem: *sua conta será bloqueada hoje*. Clique para regularizar. Parece o banco.",
+      "texto_tela": "\"Sua conta será bloqueada\"",
+      "camera": { "alvo": [0, 1.3, 0], "distancia": 7.5, "elevacao": 16, "azimute": [10, 30] },
+      "remover": ["cad"],
+      "elementos": [
+        { "id": "pc", "tipo": "computador", "x": 0, "z": 0, "cor_tela": "#ffccd5" },
+        { "id": "r-msg", "tipo": "rotulo", "texto": "URGENTE: conta bloqueada", "subtexto": "clique aqui ›", "posicao": [0, 2.3, 0.2], "atraso": 0.6 }
+      ]
+    },
+    {
+      "id": "c3", "etapa": "explicacao", "tecnica": "progressao",
+      "narracao": "O golpista usa três gatilhos: *urgência*, *medo* e *autoridade*. Sob pressão, decidimos rápido e checamos menos.",
+      "texto_tela": "Urgência, medo, autoridade",
+      "camera": { "alvo": [0, 2.6, 0], "distancia": 8, "elevacao": 14, "azimute": [30, 0] },
+      "remover": ["pc", "r-msg"],
+      "elementos": [
+        { "id": "cer", "tipo": "cerebro", "posicao": [0, 2.6, 0], "escala": 0.9, "rotacao": 60,
+          "regioes": [
+            { "nome": "Urgência", "cor": "#e63946", "posicao": [0.2, 0.7, 0.6], "raio": 0.2 },
+            { "nome": "Medo", "cor": "#ffb703", "posicao": [0.5, -0.1, 0.1], "raio": 0.2 },
+            { "nome": "Autoridade", "cor": "#9b5de5", "posicao": [-0.4, 0.6, -0.5], "raio": 0.2 }
+          ] }
+      ]
+    },
+    {
+      "id": "c4", "etapa": "demonstracao", "tecnica": "quebra_de_padrao",
+      "narracao": "Você clica, cai numa página idêntica à do banco e digita a senha. Ela vai *direto para o golpista*.",
+      "texto_tela": "A senha vai embora",
+      "camera": { "alvo": [0, 1.5, 0], "distancia": 9, "elevacao": 18, "azimute": [-15, 10] },
+      "remover": ["cer"],
+      "elementos": [
+        { "id": "pc2", "tipo": "computador", "x": -2, "z": 0, "rotacao": 25, "cor_tela": "#ffccd5" },
+        { "id": "srv", "tipo": "servidor", "x": 2.2, "z": -0.5, "altura": 2.2, "cor": "#3d0000", "atraso": 0.4 },
+        { "id": "dados", "tipo": "fluxo", "de": [-1.6, 1.1, 0.2], "para": [2.0, 1.4, -0.3], "cor": "#e63946", "quantidade": 10, "espalhamento": 0.3, "atraso": 1.2 },
+        { "id": "r-falso", "tipo": "rotulo", "texto": "Site falso", "subtexto": "servidor do golpista", "posicao": [2.2, 2.6, -0.5], "atraso": 1.4 }
+      ]
+    },
+    {
+      "id": "c5", "etapa": "revelacao", "tecnica": "surpresa",
+      "narracao": "A falha explorada não é técnica, é *humana*. Por isso a melhor defesa é um hábito: pare e cheque pelo canal oficial.",
+      "texto_tela": "A falha é humana",
+      "camera": { "alvo": [0, 2.2, 0], "distancia": 8, "elevacao": 14, "azimute": [20, -10] },
+      "remover": ["dados", "r-falso", "srv", "pc2"],
+      "elementos": [
+        { "id": "esc", "tipo": "escudo", "posicao": [0, 2.3, 0], "escala": 1.3 },
+        { "id": "r-checar", "tipo": "rotulo", "texto": "Pare → cheque no app oficial", "posicao": [0, 4.2, 0], "atraso": 1 }
+      ]
+    },
+    {
+      "id": "c6", "etapa": "fechamento", "tecnica": "identificacao",
+      "narracao": "Banco não pede senha por link. Ative a *verificação em duas etapas*. E você: já recebeu uma mensagem assim?",
+      "texto_tela": "Já recebeu uma assim?",
+      "camera": { "alvo": [0, 2.3, 0], "distancia": 7, "distancia_fim": 5.5, "elevacao": 10, "azimute": [-10, 25] },
+      "remover": ["r-checar"]
+    }
+  ]
+}

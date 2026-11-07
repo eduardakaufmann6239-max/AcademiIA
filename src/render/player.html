@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Conhecimento Explicado — player</title>
+<script type="importmap">
+{ "imports": { "three": "/node_modules/three/build/three.module.js", "three/addons/": "/node_modules/three/examples/jsm/" } }
+</script>
+<style>
+  html, body { margin: 0; padding: 0; overflow: hidden; background: #e9eef2; font-family: "Inter", "DejaVu Sans", sans-serif; }
+  #palco { position: relative; overflow: hidden; }
+  #palco canvas { display: block; }
+  .camada-ui { position: absolute; inset: 0; pointer-events: none; }
+  #titulo {
+    position: absolute; left: 50%; transform: translateX(-50%);
+    color: #fff; background: #1d3557; font-weight: 800; text-align: center;
+    border-radius: 0.35em; padding: 0.3em 0.7em; line-height: 1.15; box-shadow: 0 0.2em 0.6em rgba(0,0,0,.25);
+    max-width: 86%; transition: none;
+  }
+  #legenda {
+    position: absolute; left: 50%; transform: translateX(-50%);
+    color: #fff; font-weight: 700; text-align: center; line-height: 1.25;
+    text-shadow: 0 0 0.25em rgba(0,0,0,.9), 0 0.08em 0.1em rgba(0,0,0,.9);
+    max-width: 88%;
+  }
+  #legenda b { color: #ffd166; }
+  #marca { position: absolute; color: #1d3557; font-weight: 800; opacity: .85; }
+  #marca span { color: #e63946; }
+  #progresso { position: absolute; left: 0; bottom: 0; height: 0.45%; background: #e63946; }
+  .rotulo {
+    position: absolute; transform: translate(-50%, -100%);
+    background: #fff; color: #1d3557; font-weight: 700; white-space: nowrap;
+    border-radius: 0.3em; padding: 0.15em 0.5em; box-shadow: 0 0.1em 0.4em rgba(0,0,0,.25);
+    border-left: 0.25em solid #e63946;
+  }
+  .rotulo.equacao { background: #1d3557; color: #fff; border-left-color: #ffb703; font-size: 1.6em; padding: .3em .8em; }
+  .rotulo.equacao small { color: #a8dadc; }
+  #selo { position: absolute; left: 50%; transform: translateX(-50%); display: flex; flex-wrap: wrap; justify-content: center; gap: .3em .4em; width: max-content; max-width: 92%; white-space: nowrap; font-weight: 700; }
+  #selo span { padding: .2em .6em; border-radius: 1em; }
+  #selo .serie { background: #ffb703; color: #1d3557; }
+  #selo .nivel { background: #fff; color: #1d3557; border: .12em solid #1d3557; }
+  #selo .disc { background: #2a9d8f; color: #fff; }
+  #questao { position: absolute; display: none; background: #fff; color: #1d3557; border-radius: .5em; padding: .7em .9em; box-shadow: 0 .3em 1em rgba(0,0,0,.25); border-top: .3em solid #ffb703; }
+  #questao .origem { font-size: .7em; font-weight: 700; color: #457b9d; text-transform: uppercase; letter-spacing: .05em; }
+  #questao p { margin: .3em 0 .5em; font-weight: 600; line-height: 1.25; }
+  #questao ol { list-style: none; margin: 0; padding: 0; }
+  #questao li { display: flex; gap: .5em; align-items: flex-start; margin: .25em 0; padding: .2em .35em; border-radius: .3em; font-size: .92em; line-height: 1.2; }
+  #questao li b { background: #1d3557; color: #fff; border-radius: .25em; min-width: 1.4em; text-align: center; }
+  #questao li em { display: block; font-size: .78em; font-style: normal; color: #6c757d; margin-top: .15em; }
+  #questao li.certa { background: #d8f3dc; } #questao li.certa b { background: #2a9d8f; }
+  #questao li.errada { opacity: .75; } #questao li.errada b { background: #e63946; }
+  #questao .relogio { position: absolute; right: -.4em; top: -.9em; width: 2.2em; height: 2.2em; border-radius: 50%; background: #e63946; color: #fff; font-weight: 800; font-size: 1.5em; display: flex; align-items: center; justify-content: center; box-shadow: 0 .2em .5em rgba(0,0,0,.3); }
+  .rotulo small { display:block; font-weight: 500; color: #457b9d; font-size: .75em; }
+</style>
+</head>
+<body>
+<div id="palco">
+  <div class="camada-ui" id="rotulos"></div>
+  <div class="camada-ui">
+    <div id="selo"></div>
+    <div id="titulo"></div>
+    <div id="questao"></div>
+    <div id="legenda"></div>
+    <div id="marca"></div>
+    <div id="progresso"></div>
+  </div>
+</div>
+<script type="module" src="/src/render/cena.js"></script>
+</body>
+</html>

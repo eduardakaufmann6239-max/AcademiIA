@@ -1,0 +1,437 @@
+{
+  "titulo": "Seu cérebro engana você",
+  "pilar": "neurociencia",
+  "serie": "voce_sabia",
+  "nivel": "basico",
+  "formato": "curto",
+  "disciplinas": [
+    "Neurociência",
+    "Psicologia"
+  ],
+  "publico": "público geral",
+  "pergunta_central": "Por que nem sempre podemos confiar no que percebemos?",
+  "loop_aberto": "Se o cérebro não grava como uma câmera, o que ele faz com o que vemos?",
+  "legenda_post": "Seu cérebro não grava a realidade: ele interpreta, usa experiências anteriores e preenche lacunas. Isso nos deixa rápidos — e às vezes errados. Salve para lembrar e siga para entender como o mundo (e a sua mente) funciona.",
+  "hashtags": [
+    "#neurociencia",
+    "#cerebro",
+    "#psicologia",
+    "#percepcao",
+    "#ciencia",
+    "#conhecimentoexplicado"
+  ],
+  "fontes": [
+    "Kandel et al. — Principles of Neural Science, 6ª ed. (2021)",
+    "Gregory, R. L. — 'Perceptions as hypotheses', Philosophical Transactions of the Royal Society B (1980)",
+    "Loftus, E. — 'Planting misinformation in the human mind', Learning & Memory (2005)"
+  ],
+  "cenas": [
+    {
+      "id": "c1",
+      "etapa": "gancho",
+      "tecnica": "surpresa",
+      "narracao": "Seu cérebro pode *enganar você*. E faz isso todos os dias.",
+      "texto_tela": "Seu cérebro engana você",
+      "camera": {
+        "alvo": [
+          0,
+          2.6,
+          0
+        ],
+        "distancia": 7,
+        "distancia_fim": 5.5,
+        "elevacao": 18,
+        "azimute": [
+          70,
+          30
+        ]
+      },
+      "elementos": [
+        {
+          "id": "cerebro",
+          "tipo": "cerebro",
+          "posicao": [
+            0,
+            2.6,
+            0
+          ],
+          "escala": 1,
+          "rotacao": -30,
+          "animacao": "surgir"
+        }
+      ]
+    },
+    {
+      "id": "c2",
+      "etapa": "curiosidade",
+      "tecnica": "identificacao",
+      "narracao": "Já teve *certeza* de que viu ou ouviu algo... e depois descobriu que estava errado?",
+      "texto_tela": "Você tinha certeza?",
+      "camera": {
+        "alvo": [
+          0,
+          1.8,
+          0
+        ],
+        "distancia": 10,
+        "elevacao": 15,
+        "azimute": [
+          20,
+          40
+        ]
+      },
+      "remover": [
+        "cerebro"
+      ],
+      "elementos": [
+        {
+          "id": "pessoa",
+          "tipo": "pessoa",
+          "x": -1.8,
+          "z": 0,
+          "altura": 1.75,
+          "atraso": 0.1
+        },
+        {
+          "id": "duvida",
+          "tipo": "esfera",
+          "posicao": [
+            -1.8,
+            2.5,
+            0
+          ],
+          "raio": 0.25,
+          "cor": "#ffb703",
+          "brilho": 0.6,
+          "atraso": 1.2
+        },
+        {
+          "id": "r-certeza",
+          "tipo": "rotulo",
+          "texto": "\"Eu vi!\"",
+          "posicao": [
+            -1.8,
+            3.1,
+            0
+          ],
+          "atraso": 1.4
+        }
+      ]
+    },
+    {
+      "id": "c3",
+      "etapa": "curiosidade",
+      "tecnica": "open_loop",
+      "narracao": "A explicação tem a ver com algo que o cérebro *não* faz.",
+      "texto_tela": "O que ele não faz?",
+      "camera": {
+        "alvo": [
+          0,
+          2,
+          0
+        ],
+        "distancia": 9,
+        "elevacao": 20,
+        "azimute": [
+          5,
+          20
+        ]
+      },
+      "elementos": [
+        {
+          "id": "camera-cubo",
+          "tipo": "cubo",
+          "posicao": [
+            1.6,
+            1.3,
+            0
+          ],
+          "tamanho": 0.9,
+          "cor": "#2b2d42",
+          "atraso": 0.3
+        },
+        {
+          "id": "lente",
+          "tipo": "esfera",
+          "posicao": [
+            1.6,
+            1.75,
+            0.5
+          ],
+          "raio": 0.3,
+          "cor": "#4cc9f0",
+          "brilho": 0.4,
+          "atraso": 0.6
+        }
+      ],
+      "destacar": [
+        "camera-cubo",
+        "lente"
+      ]
+    },
+    {
+      "id": "c4",
+      "etapa": "explicacao",
+      "tecnica": "quebra_de_padrao",
+      "narracao": "Ele não funciona como uma *câmera*. Não grava tudo o que acontece.",
+      "texto_tela": "Não é uma câmera",
+      "camera": {
+        "alvo": [
+          1.6,
+          1.6,
+          0
+        ],
+        "distancia": 6,
+        "elevacao": 10,
+        "azimute": [
+          15,
+          -5
+        ]
+      },
+      "elementos": [
+        {
+          "id": "x1",
+          "tipo": "seta",
+          "de": [
+            0.7,
+            2.6,
+            0.6
+          ],
+          "para": [
+            2.5,
+            0.8,
+            0.6
+          ],
+          "cor": "destaque",
+          "espessura": 0.07,
+          "atraso": 0.6
+        },
+        {
+          "id": "x2",
+          "tipo": "seta",
+          "de": [
+            2.5,
+            2.6,
+            0.6
+          ],
+          "para": [
+            0.7,
+            0.8,
+            0.6
+          ],
+          "cor": "destaque",
+          "espessura": 0.07,
+          "atraso": 0.9
+        }
+      ]
+    },
+    {
+      "id": "c5",
+      "etapa": "demonstracao",
+      "tecnica": "progressao",
+      "narracao": "Ele *interpreta*. Os olhos mandam sinais incompletos...",
+      "texto_tela": "Sinais incompletos",
+      "camera": {
+        "alvo": [
+          0,
+          2.4,
+          0
+        ],
+        "distancia": 10,
+        "elevacao": 14,
+        "azimute": [
+          -10,
+          15
+        ]
+      },
+      "remover": [
+        "camera-cubo",
+        "lente",
+        "x1",
+        "x2",
+        "duvida",
+        "r-certeza",
+        "pessoa"
+      ],
+      "elementos": [
+        {
+          "id": "cerebro2",
+          "tipo": "cerebro",
+          "posicao": [
+            1.4,
+            2.6,
+            0
+          ],
+          "escala": 0.75,
+          "rotacao": -60,
+          "animacao": "surgir"
+        },
+        {
+          "id": "olho",
+          "tipo": "esfera",
+          "posicao": [
+            -2.4,
+            2.6,
+            0
+          ],
+          "raio": 0.45,
+          "cor": "#ffffff",
+          "atraso": 0.2
+        },
+        {
+          "id": "iris",
+          "tipo": "esfera",
+          "posicao": [
+            -2.05,
+            2.6,
+            0.1
+          ],
+          "raio": 0.2,
+          "cor": "#457b9d",
+          "atraso": 0.3
+        },
+        {
+          "id": "sinais",
+          "tipo": "fluxo",
+          "de": [
+            -1.9,
+            2.6,
+            0
+          ],
+          "para": [
+            0.3,
+            2.6,
+            0
+          ],
+          "cor": "#ffb703",
+          "quantidade": 9,
+          "espalhamento": 0.5,
+          "velocidade": 1.4,
+          "atraso": 0.8
+        }
+      ]
+    },
+    {
+      "id": "c6",
+      "etapa": "demonstracao",
+      "tecnica": "progressao",
+      "narracao": "...e ele completa as *lacunas* usando experiências anteriores e expectativas.",
+      "texto_tela": "Ele preenche lacunas",
+      "camera": {
+        "alvo": [
+          1.2,
+          2.6,
+          0
+        ],
+        "distancia": 6.5,
+        "elevacao": 18,
+        "azimute": [
+          20,
+          50
+        ]
+      },
+      "elementos": [
+        {
+          "id": "cerebro-reg",
+          "tipo": "cerebro",
+          "posicao": [
+            1.4,
+            2.6,
+            0
+          ],
+          "escala": 0.75,
+          "rotacao": -60,
+          "animacao": "nenhuma",
+          "regioes": [
+            {
+              "nome": "Memória",
+              "descricao": "experiências",
+              "cor": "#ffb703",
+              "posicao": [
+                0.4,
+                0.1,
+                -0.2
+              ],
+              "raio": 0.22
+            },
+            {
+              "nome": "Expectativa",
+              "descricao": "o que você espera",
+              "cor": "#e63946",
+              "posicao": [
+                0.3,
+                0.55,
+                0.65
+              ],
+              "raio": 0.22
+            }
+          ]
+        }
+      ],
+      "remover": [
+        "cerebro2"
+      ]
+    },
+    {
+      "id": "c7",
+      "etapa": "revelacao",
+      "tecnica": "surpresa",
+      "narracao": "Ou seja: o que você percebe é uma *reconstrução*. Rápida e útil, mas nem sempre fiel ao que aconteceu.",
+      "texto_tela": "Percepção = reconstrução",
+      "camera": {
+        "alvo": [
+          0,
+          2.4,
+          0
+        ],
+        "distancia": 9,
+        "elevacao": 12,
+        "azimute": [
+          50,
+          0
+        ]
+      },
+      "elementos": [
+        {
+          "id": "eq",
+          "tipo": "equacao",
+          "texto": "sinais + memória + expectativa",
+          "subtexto": "= o que você percebe",
+          "posicao": [
+            0,
+            4.6,
+            0
+          ],
+          "atraso": 0.4
+        }
+      ]
+    },
+    {
+      "id": "c8",
+      "etapa": "fechamento",
+      "tecnica": "curiosity_gap",
+      "narracao": "Então: será que podemos *confiar* completamente naquilo que percebemos? Comente o que você acha.",
+      "texto_tela": "Dá para confiar?",
+      "camera": {
+        "alvo": [
+          0,
+          2.6,
+          0
+        ],
+        "distancia": 8,
+        "distancia_fim": 6,
+        "elevacao": 25,
+        "azimute": [
+          0,
+          -35
+        ]
+      },
+      "remover": [
+        "eq",
+        "olho",
+        "iris",
+        "sinais"
+      ]
+    }
+  ]
+}

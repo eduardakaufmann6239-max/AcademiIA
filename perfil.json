@@ -1,0 +1,104 @@
+{
+  "nome": "Conhecimento Explicado",
+  "arroba": "@conhecimentoexplicado",
+  "slogan": "Ciência. Tecnologia. Educação. Sociedade.",
+  "missao": "Ensinar as pessoas a compreender como o mundo funciona, desde os fundamentos escolares até os sistemas complexos da sociedade, transformando assuntos complexos em explicações visuais, didáticas e acessíveis — sem perder o rigor científico.",
+  "metodo": [
+    "Explicações visualmente atraentes, com animações e representações em 3D",
+    "Linguagem acessível sem perder o rigor científico",
+    "Exemplos do cotidiano brasileiro",
+    "Fontes confiáveis e conhecimento verificável",
+    "Conteúdo organizado por níveis de dificuldade",
+    "Conectar disciplinas: mostrar como o conhecimento funciona no mundo real",
+    "Pensamento sistêmico como metodologia transversal: ensinar como as partes se conectam e formam o todo (interdependência, feedback, causalidade, efeitos indiretos)"
+  ],
+  "pilares": {
+    "ia": "Inteligência Artificial e Tecnologia — como funcionam as IAs, como as máquinas aprendem, automação, robótica e algoritmos, impactos da IA no trabalho e na sociedade",
+    "economia": "Economia e Negócios — inflação, juros e PIB, empresas e modelos de negócio, mercado financeiro, economia brasileira e mundial",
+    "neurociencia": "Neurociência e Psicologia — memória e aprendizagem, atenção e emoções, funcionamento do cérebro, comportamento e tomada de decisões",
+    "seguranca": "Segurança e Gestão de Riscos — segurança digital, privacidade e proteção de dados, engenharia social e golpes, gestão de riscos e segurança da informação",
+    "escola": "Educação escolar (Ensino Fundamental e Médio) — Matemática, Física, Química, Biologia, História, Geografia, Sociologia, Filosofia, Português, Literatura, Inglês, Artes e Redação",
+    "sistemas": "Sistemas e Pensamento Sistêmico — sistemas computacionais (sistemas operacionais, redes, bancos de dados, arquitetura de software), econômicos (capitalismo, socialismo, economia mista, mercados), políticos (democracia, república, parlamentarismo, federalismo), sociais (instituições, organizações, relações de poder), biológicos (nervoso, circulatório, respiratório, imunológico), educacionais (modelos de ensino, organização escolar, avaliação), de segurança (gestão de riscos, defesa cibernética, infraestruturas críticas) e pensamento sistêmico (interdependência, feedback, causalidade, efeitos indiretos)",
+    "enem": "ENEM e Preparação Acadêmica — Ciências Humanas (História, Geografia, Filosofia, Sociologia), Ciências da Natureza (Biologia, Física, Química), Matemática (aritmética, álgebra, geometria, estatística, probabilidade), Linguagens (Português, Literatura, Inglês, Artes, interpretação textual), Redação (estrutura dissertativo-argumentativa, repertório, argumentação, as 5 competências), estratégias de prova (gestão do tempo, interpretação de questões, eliminação de alternativas), simulados e atualidades (temas sociais, científicos, ambientais, econômicos e políticos). Alinhado à Matriz de Referência oficial do INEP (competências e habilidades).",
+    "medicina_chinesa": "Medicina Tradicional Chinesa — história e filosofia (yin-yang, qi, cinco elementos, meridianos), práticas (acupuntura, fitoterapia, moxabustão, tai chi, qigong), sua influência cultural e o que a ciência já testou: evidências, limites e riscos",
+    "interdisciplinar": "Conhecimento interdisciplinar — ciência no cotidiano, relações entre economia, política e tecnologia, história das invenções, como as áreas do conhecimento se conectam"
+  },
+  "series": {
+    "como_funciona": "Como funciona? — explica um mecanismo ou fenômeno",
+    "aprenda_60s": "Aprenda em 60 segundos — conteúdo escolar objetivo",
+    "voce_sabia": "Você sabia? — descoberta ou curiosidade fundamentada",
+    "entenda_o_mundo": "Entenda o mundo — análise de um acontecimento ou fenômeno atual",
+    "conectando": "Conectando conhecimentos — integra duas ou mais disciplinas",
+    "entenda_o_sistema": "Entenda o sistema — explica um sistema em 5 passos: Estrutura (componentes), Organização (como estão distribuídos), Funcionamento (como interagem), Interdependência (como uma parte afeta as outras) e Resultados (o que acontece quando o sistema muda)",
+    "enem_1min": "ENEM em 1 minuto — explicação rápida de um conceito cobrado na prova",
+    "questao_comentada": "Questão comentada — resolução explicada passo a passo",
+    "por_que_errada": "Por que essa alternativa está errada? — análise dos distratores",
+    "redacao_1000": "Redação nota 1000 — estrutura, argumentação, repertório e competências",
+    "conexoes_enem": "Conexões ENEM — como diferentes disciplinas aparecem juntas na prova",
+    "simulado_relampago": "Simulado relâmpago — uma questão para o público responder antes da explicação"
+  },
+  "niveis": {
+    "basico": "sem pré-requisitos; qualquer pessoa entende",
+    "intermediario": "supõe noções do ensino médio",
+    "avancado": "aprofunda o mecanismo, com termos técnicos explicados"
+  },
+  "conexoes_exemplo": {
+    "Inteligência artificial": "Matemática + Computação + Neurociência",
+    "Inflação": "Economia + Matemática + História",
+    "Mudanças climáticas": "Química + Biologia + Geografia",
+    "Guerras": "História + Geografia + Economia",
+    "Aprendizagem": "Neurociência + Psicologia + Educação",
+    "Segurança digital": "Tecnologia + Matemática + Psicologia",
+    "Medicina chinesa": "História + Filosofia + Biologia + Método científico"
+  },
+  "tom": "didático, curioso e direto; frases curtas; uma ideia por cena; exemplos do cotidiano brasileiro; rigoroso e honesto; sem sensacionalismo",
+  "identidade_visual": {
+    "paleta": {
+      "base": "#1d3557",
+      "secundaria": "#457b9d",
+      "destaque": "#e63946",
+      "positivo": "#2a9d8f",
+      "energia": "#ffb703",
+      "fundo": "#e9eef2"
+    },
+    "elementos": "animações 3D explicativas, cenários tridimensionais em movimento, narração clara, legendas sincronizadas, música de fundo discreta, diagramas e comparações visuais"
+  },
+  "definicao": "Uma plataforma de educação visual dedicada a explicar ciências, tecnologia, sistemas, sociedade e conhecimentos acadêmicos, transformando conceitos complexos em conteúdos claros, fundamentados e acessíveis.",
+  "perguntas_sistemas": [
+    "Como funciona o sistema político brasileiro?",
+    "Como o dinheiro circula na economia?",
+    "Como funciona o sistema operacional de um computador?",
+    "Como funciona o sistema imunológico?",
+    "Como uma empresa organiza seus departamentos?",
+    "Como funciona o sistema educacional brasileiro?",
+    "Como uma decisão econômica afeta toda a sociedade?"
+  ],
+  "posicionamento": "PLATAFORMA DE CONHECIMENTO — Educação visual, científica e interdisciplinar.",
+  "objetivos": [
+    "Ensinar a compreender o mundo",
+    "Ajudar a conquistar domínio acadêmico (ENEM, vestibulares e ingresso na universidade)"
+  ],
+  "enem": {
+    "areas": {
+      "humanas": "Ciências Humanas e suas Tecnologias",
+      "natureza": "Ciências da Natureza e suas Tecnologias",
+      "matematica": "Matemática e suas Tecnologias",
+      "linguagens": "Linguagens, Códigos e suas Tecnologias",
+      "redacao": "Redação"
+    },
+    "conexoes_com_pilares": {
+      "economia": "inflação, desigualdade e desenvolvimento",
+      "neurociencia": "memória, aprendizagem e cognição",
+      "ia": "algoritmos, tecnologia e sociedade",
+      "sistemas": "ecossistemas, sistemas políticos e sistemas econômicos",
+      "seguranca": "segurança alimentar, saúde pública e segurança digital"
+    },
+    "regra_questoes": "Questão apresentada como do ENEM deve ser real, com ano e fonte (INEP) — transcreva fielmente. Questão criada pela equipe deve ser identificada como 'estilo ENEM'. Sempre indique a competência/habilidade da Matriz de Referência quando souber com segurança."
+  },
+  "regras_editoriais": [
+    "Saúde e Medicina Tradicional Chinesa: apresente os conceitos tradicionais como tradição cultural e filosófica ('segundo a MTC...'), separando claramente do que foi testado cientificamente; cite revisões sistemáticas (ex.: Cochrane) e diga onde a evidência é forte, fraca ou inexistente; nunca sugira substituir diagnóstico ou tratamento médico; alerte sobre riscos reais (ervas tóxicas como as que contêm ácido aristolóquico, interações medicamentosas, produtos de origem animal ameaçados); sem promessas de cura.",
+    "Política e economia: explique mecanismos e diferentes visões com equilíbrio, sem tomar partido.",
+    "Segurança: ensine a se proteger e a reconhecer golpes; nunca a atacar.",
+    "Finanças e saúde: nenhuma recomendação individual."
+  ]
+}

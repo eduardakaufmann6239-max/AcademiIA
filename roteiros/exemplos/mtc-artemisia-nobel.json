@@ -1,0 +1,375 @@
+{
+  "titulo": "A erva chinesa que virou Prêmio Nobel",
+  "pilar": "medicina_chinesa",
+  "serie": "voce_sabia",
+  "nivel": "basico",
+  "formato": "curto",
+  "disciplinas": [
+    "História",
+    "Química",
+    "Medicina",
+    "Método científico"
+  ],
+  "publico": "público geral",
+  "pergunta_central": "Como um texto da medicina tradicional chinesa levou a um remédio contra a malária?",
+  "loop_aberto": "Por que a receita antiga só funcionou quando mudaram um detalhe?",
+  "legenda_post": "Um texto chinês do século IV inspirou um dos remédios mais importantes contra a malária — mas só depois de testado com método científico. A história de Tu Youyou mostra como tradição e ciência podem dialogar. Salve e siga para mais histórias da ciência.",
+  "hashtags": [
+    "#medicinachinesa",
+    "#historiadaciencia",
+    "#nobel",
+    "#malaria",
+    "#quimica",
+    "#conhecimentoexplicado"
+  ],
+  "fontes": [
+    "The Nobel Prize — Physiology or Medicine 2015, Tu Youyou: 'Discoveries concerning a novel therapy against Malaria' (nobelprize.org)",
+    "Tu, Y. — 'The discovery of artemisinin (qinghaosu) and gifts from Chinese medicine', Nature Medicine 17, 1217–1220 (2011)",
+    "OMS — World Malaria Report (terapias combinadas à base de artemisinina)"
+  ],
+  "cenas": [
+    {
+      "id": "c1",
+      "etapa": "gancho",
+      "tecnica": "surpresa",
+      "narracao": "Uma receita de mais de *1.600 anos* virou Prêmio Nobel.",
+      "texto_tela": "Receita antiga, Nobel",
+      "camera": {
+        "alvo": [
+          0,
+          2.4,
+          0
+        ],
+        "distancia": 7.5,
+        "distancia_fim": 6,
+        "elevacao": 14,
+        "azimute": [
+          -30,
+          10
+        ]
+      },
+      "elementos": [
+        {
+          "id": "yy",
+          "tipo": "yin_yang",
+          "posicao": [
+            0,
+            2.4,
+            0
+          ],
+          "raio": 1.3
+        }
+      ]
+    },
+    {
+      "id": "c2",
+      "etapa": "curiosidade",
+      "tecnica": "storytelling",
+      "narracao": "Anos 1960: a malária resistia aos remédios da época. Na China, a pesquisadora *Tu Youyou* foi procurar pistas em textos antigos.",
+      "texto_tela": "A busca de Tu Youyou",
+      "camera": {
+        "alvo": [
+          0,
+          1.2,
+          0
+        ],
+        "distancia": 9,
+        "elevacao": 16,
+        "azimute": [
+          10,
+          35
+        ]
+      },
+      "remover": [
+        "yy"
+      ],
+      "elementos": [
+        {
+          "id": "lt",
+          "tipo": "linha_tempo",
+          "posicao": [
+            0,
+            1.2,
+            0
+          ],
+          "comprimento": 6,
+          "intervalo": 0.9,
+          "eventos": [
+            {
+              "ano": "séc. IV",
+              "texto": "texto de Ge Hong"
+            },
+            {
+              "ano": "1972",
+              "texto": "artemisinina isolada"
+            },
+            {
+              "ano": "2015",
+              "texto": "Prêmio Nobel"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "c3",
+      "etapa": "explicacao",
+      "tecnica": "open_loop",
+      "narracao": "Um texto do século IV recomendava a planta *qinghao* contra febres. Mas os primeiros extratos falhavam. Por quê?",
+      "texto_tela": "Por que falhava?",
+      "camera": {
+        "alvo": [
+          0,
+          1.6,
+          0
+        ],
+        "distancia": 7.5,
+        "elevacao": 12,
+        "azimute": [
+          -10,
+          15
+        ]
+      },
+      "remover": [
+        "lt"
+      ],
+      "elementos": [
+        {
+          "id": "planta",
+          "tipo": "arvore",
+          "x": 0,
+          "z": 0,
+          "altura": 3,
+          "cor": "#7fb069"
+        },
+        {
+          "id": "r-planta",
+          "tipo": "rotulo",
+          "texto": "Qinghao (Artemisia annua)",
+          "posicao": [
+            0,
+            3.3,
+            0
+          ],
+          "atraso": 0.6
+        }
+      ]
+    },
+    {
+      "id": "c4",
+      "etapa": "revelacao",
+      "tecnica": "surpresa",
+      "narracao": "O detalhe estava no texto: usar a planta *sem ferver*. O calor destruía a substância ativa. Extraída a frio, ela funcionou.",
+      "texto_tela": "O segredo: sem ferver",
+      "camera": {
+        "alvo": [
+          0,
+          2.4,
+          0
+        ],
+        "distancia": 7,
+        "elevacao": 14,
+        "azimute": [
+          20,
+          -10
+        ]
+      },
+      "remover": [
+        "planta",
+        "r-planta"
+      ],
+      "elementos": [
+        {
+          "id": "mol",
+          "tipo": "molecula",
+          "posicao": [
+            0,
+            2.4,
+            0
+          ],
+          "escala": 1.1,
+          "atomos": [
+            {
+              "elemento": "C",
+              "posicao": [
+                0,
+                0,
+                0
+              ]
+            },
+            {
+              "elemento": "C",
+              "posicao": [
+                0.9,
+                0.5,
+                0
+              ]
+            },
+            {
+              "elemento": "C",
+              "posicao": [
+                1.8,
+                0,
+                0
+              ]
+            },
+            {
+              "elemento": "C",
+              "posicao": [
+                -0.9,
+                0.5,
+                0
+              ]
+            },
+            {
+              "elemento": "O",
+              "posicao": [
+                0.9,
+                1.5,
+                0.3
+              ]
+            },
+            {
+              "elemento": "O",
+              "posicao": [
+                0,
+                2,
+                0.6
+              ]
+            },
+            {
+              "elemento": "C",
+              "posicao": [
+                -1.8,
+                0,
+                0
+              ]
+            },
+            {
+              "elemento": "O",
+              "posicao": [
+                2.6,
+                0.6,
+                0
+              ]
+            },
+            {
+              "elemento": "H",
+              "posicao": [
+                0,
+                -0.9,
+                0.4
+              ]
+            },
+            {
+              "elemento": "H",
+              "posicao": [
+                -2.6,
+                -0.4,
+                0
+              ]
+            }
+          ],
+          "ligacoes": [
+            [
+              0,
+              1
+            ],
+            [
+              1,
+              2
+            ],
+            [
+              0,
+              3
+            ],
+            [
+              1,
+              4
+            ],
+            [
+              4,
+              5
+            ],
+            [
+              5,
+              3
+            ],
+            [
+              3,
+              6
+            ],
+            [
+              2,
+              7
+            ],
+            [
+              0,
+              8
+            ],
+            [
+              6,
+              9
+            ]
+          ]
+        },
+        {
+          "id": "r-mol",
+          "tipo": "rotulo",
+          "texto": "Artemisinina",
+          "subtexto": "ilustração simplificada",
+          "posicao": [
+            0,
+            4.6,
+            0
+          ],
+          "atraso": 0.8
+        }
+      ]
+    },
+    {
+      "id": "c5",
+      "etapa": "revelacao",
+      "tecnica": "progressao",
+      "narracao": "Mas a pista antiga só virou remédio porque foi *testada*: isolada, purificada e avaliada em estudos clínicos. Hoje é base do tratamento recomendado pela OMS.",
+      "texto_tela": "Tradição + método científico",
+      "camera": {
+        "alvo": [
+          0,
+          2.4,
+          0
+        ],
+        "distancia": 9,
+        "elevacao": 22,
+        "azimute": [
+          -10,
+          -40
+        ]
+      }
+    },
+    {
+      "id": "c6",
+      "etapa": "fechamento",
+      "tecnica": "curiosity_gap",
+      "narracao": "Nem tudo da medicina tradicional funciona: o que vale é o que passa pelo *teste*. Que outra tradição você gostaria de ver testada?",
+      "texto_tela": "O que passa no teste?",
+      "camera": {
+        "alvo": [
+          0,
+          2.4,
+          0
+        ],
+        "distancia": 9,
+        "distancia_fim": 7.5,
+        "elevacao": 12,
+        "azimute": [
+          -40,
+          -10
+        ]
+      },
+      "remover": [
+        "r-mol"
+      ]
+    }
+  ]
+}

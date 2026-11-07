@@ -1,0 +1,16 @@
+{
+  "name": "academiia-obra-explicada",
+  "version": "1.0.0",
+  "description": "Agente de IA que cria vídeos 3D educativos (curtos e longos) sobre arquitetura, engenharia e urbanismo.",
+  "type": "module",
+  "bin": { "obra": "src/cli.js" },
+  "scripts": {
+    "exemplos": "node src/cli.js exemplos",
+    "teste": "node src/cli.js render roteiros/exemplos/laje-curto.json --rapido --saida saida/teste.mp4"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^1.6.0",
+    "three": "0.170.0"
+  },
+  "engines": { "node": ">=20" }
+}

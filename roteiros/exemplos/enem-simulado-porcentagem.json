@@ -1,0 +1,284 @@
+{
+  "titulo": "Aumentou 10% e baixou 10%: voltou ao preço?",
+  "pilar": "enem",
+  "serie": "simulado_relampago",
+  "nivel": "intermediario",
+  "formato": "curto",
+  "disciplinas": [
+    "Matemática",
+    "Educação financeira"
+  ],
+  "enem": {
+    "area": "matematica",
+    "competencia": "Competência de área 1",
+    "habilidade": "H3 — resolver situação-problema envolvendo conhecimentos numéricos",
+    "origem_questao": "estilo ENEM (autoral)"
+  },
+  "publico": "estudantes do ensino médio e quem vai prestar o ENEM",
+  "pergunta_central": "Um aumento de 10% seguido de um desconto de 10% volta ao preço original?",
+  "loop_aberto": "Por que a resposta 'óbvia' (R$ 200) está errada?",
+  "legenda_post": "Pausa e responde nos comentários ANTES de ver a resposta! Porcentagens em sequência não se cancelam — e isso cai muito no ENEM. Salve para revisar e marque quem vai prestar a prova.",
+  "hashtags": [
+    "#enem",
+    "#matematica",
+    "#porcentagem",
+    "#vestibular",
+    "#simulado",
+    "#conhecimentoexplicado"
+  ],
+  "fontes": [
+    "INEP — Matriz de Referência do ENEM, Matemática e suas Tecnologias (Competência de área 1)",
+    "Iezzi, G. et al. — Matemática: Ciência e Aplicações (porcentagem e fatores de aumento/desconto)"
+  ],
+  "cenas": [
+    {
+      "id": "c1",
+      "etapa": "gancho",
+      "tecnica": "curiosity_gap",
+      "narracao": "Subiu 10% e depois caiu 10%. *Voltou ao preço*?",
+      "texto_tela": "Voltou ao preço?",
+      "camera": {
+        "alvo": [
+          0,
+          1.4,
+          0
+        ],
+        "distancia": 9,
+        "distancia_fim": 7,
+        "elevacao": 14,
+        "azimute": [
+          -25,
+          5
+        ]
+      },
+      "elementos": [
+        {
+          "id": "barras",
+          "tipo": "grafico_barras",
+          "valores": [
+            200,
+            220,
+            198
+          ],
+          "rotulos": [
+            "Antes",
+            "+10%",
+            "−10%"
+          ],
+          "prefixo": "R$ ",
+          "escala": 0.012,
+          "cores": [
+            "#457b9d",
+            "#e63946",
+            "#2a9d8f"
+          ],
+          "posicao": [
+            0,
+            0,
+            0
+          ],
+          "largura_barra": 0.8,
+          "espaco": 1.1
+        }
+      ]
+    },
+    {
+      "id": "c2",
+      "etapa": "curiosidade",
+      "tecnica": "open_loop",
+      "narracao": "Questão estilo ENEM. Você tem *cinco segundos*. Responda nos comentários!",
+      "texto_tela": "Simulado relâmpago",
+      "camera": {
+        "alvo": [
+          0,
+          1.4,
+          0
+        ],
+        "distancia": 9,
+        "elevacao": 22,
+        "azimute": [
+          5,
+          15
+        ]
+      },
+      "remover": [
+        "barras"
+      ],
+      "duracao": 8,
+      "elementos": [
+        {
+          "id": "q",
+          "tipo": "questao",
+          "origem": "Questão estilo ENEM (autoral)",
+          "contagem": 5,
+          "revelar_em": 99,
+          "enunciado": "Um produto de R$ 200,00 teve aumento de 10% e, no mês seguinte, desconto de 10% sobre o novo preço. O preço final é:",
+          "alternativas": [
+            "A) R$ 200,00",
+            "B) R$ 198,00",
+            "C) R$ 202,00",
+            "D) R$ 180,00",
+            "E) R$ 220,00"
+          ],
+          "correta": "B"
+        }
+      ]
+    },
+    {
+      "id": "c3",
+      "etapa": "explicacao",
+      "tecnica": "surpresa",
+      "narracao": "Se você marcou A, caiu na pegadinha. A resposta é a *B*: 198 reais.",
+      "texto_tela": "Resposta: B",
+      "camera": {
+        "alvo": [
+          0,
+          1.4,
+          0
+        ],
+        "distancia": 9,
+        "elevacao": 22,
+        "azimute": [
+          15,
+          20
+        ]
+      },
+      "remover": [
+        "q"
+      ],
+      "elementos": [
+        {
+          "id": "q2",
+          "tipo": "questao",
+          "origem": "Questão estilo ENEM (autoral)",
+          "contagem": 0,
+          "revelar_em": 0,
+          "animacao": "nenhuma",
+          "enunciado": "Um produto de R$ 200,00 teve aumento de 10% e, no mês seguinte, desconto de 10% sobre o novo preço. O preço final é:",
+          "alternativas": [
+            "A) R$ 200,00",
+            "B) R$ 198,00",
+            "C) R$ 202,00",
+            "D) R$ 180,00",
+            "E) R$ 220,00"
+          ],
+          "correta": "B",
+          "explicacoes": {
+            "A": "achar que +10% e −10% se cancelam",
+            "C": "aplicar o desconto antes e errar a conta",
+            "D": "tirar 10% duas vezes",
+            "E": "parar no aumento"
+          }
+        }
+      ]
+    },
+    {
+      "id": "c4",
+      "etapa": "demonstracao",
+      "tecnica": "progressao",
+      "narracao": "Os 10% de aumento são calculados sobre 200: vira *220*. Mas o desconto é sobre 220, não sobre 200.",
+      "texto_tela": "A base mudou",
+      "camera": {
+        "alvo": [
+          0,
+          1.6,
+          0
+        ],
+        "distancia": 9,
+        "elevacao": 12,
+        "azimute": [
+          -20,
+          10
+        ]
+      },
+      "remover": [
+        "q2"
+      ],
+      "elementos": [
+        {
+          "id": "barras2",
+          "tipo": "grafico_barras",
+          "valores": [
+            200,
+            220,
+            198
+          ],
+          "rotulos": [
+            "Antes",
+            "+10% de 200",
+            "−10% de 220"
+          ],
+          "prefixo": "R$ ",
+          "escala": 0.012,
+          "cores": [
+            "#457b9d",
+            "#e63946",
+            "#2a9d8f"
+          ],
+          "posicao": [
+            0,
+            0,
+            0
+          ],
+          "largura_barra": 0.8,
+          "espaco": 1.1
+        }
+      ]
+    },
+    {
+      "id": "c5",
+      "etapa": "revelacao",
+      "tecnica": "surpresa",
+      "narracao": "10% de 220 são 22 reais. 220 menos 22 dá *198*. Atalho de prova: multiplique os fatores.",
+      "texto_tela": "Multiplique os fatores",
+      "camera": {
+        "alvo": [
+          0,
+          2.2,
+          0
+        ],
+        "distancia": 8.5,
+        "elevacao": 10,
+        "azimute": [
+          10,
+          -10
+        ]
+      },
+      "elementos": [
+        {
+          "id": "eq",
+          "tipo": "equacao",
+          "texto": "200 × 1,10 × 0,90 = 198",
+          "subtexto": "fator de aumento × fator de desconto",
+          "posicao": [
+            0,
+            4.2,
+            0
+          ],
+          "atraso": 0.8
+        }
+      ]
+    },
+    {
+      "id": "c6",
+      "etapa": "fechamento",
+      "tecnica": "identificacao",
+      "narracao": "Vale para promoção, salário e investimento: porcentagens em sequência *não se cancelam*. Quantos você acertou? Conta aí.",
+      "texto_tela": "Não se cancelam!",
+      "camera": {
+        "alvo": [
+          0,
+          1.8,
+          0
+        ],
+        "distancia": 9.5,
+        "distancia_fim": 8,
+        "elevacao": 20,
+        "azimute": [
+          -10,
+          30
+        ]
+      }
+    }
+  ]
+}
