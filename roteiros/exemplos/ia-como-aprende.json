@@ -1,0 +1,317 @@
+{
+  "titulo": "Como uma IA aprende?",
+  "formato": "curto",
+  "publico": "público geral, sem conhecimento técnico",
+  "legenda_post": "Uma IA não 'pensa' como a gente: ela ajusta milhões de números até errar cada vez menos. Salve este vídeo para explicar para alguém e siga para entender a tecnologia que está mudando o mundo.",
+  "hashtags": [
+    "#inteligenciaartificial",
+    "#IA",
+    "#redesneurais",
+    "#tecnologia",
+    "#ciencia",
+    "#conhecimentoexplicado"
+  ],
+  "fontes": [
+    "Goodfellow, Bengio & Courville — Deep Learning (MIT Press, 2016)",
+    "3Blue1Brown — série 'Neural Networks'"
+  ],
+  "cenas": [
+    {
+      "id": "c1",
+      "narracao": "Ninguém ensina a resposta para a IA. Então *como ela acerta*?",
+      "texto_tela": "Como a IA acerta?",
+      "camera": {
+        "alvo": [
+          0,
+          3,
+          0
+        ],
+        "distancia": 13,
+        "elevacao": 10,
+        "azimute": [
+          -25,
+          10
+        ]
+      },
+      "elementos": [
+        {
+          "id": "rede",
+          "tipo": "rede_neural",
+          "camadas_neuronios": [
+            3,
+            5,
+            5,
+            2
+          ],
+          "posicao": [
+            0,
+            3,
+            0
+          ],
+          "pulsos": false
+        }
+      ],
+      "etapa": "gancho",
+      "tecnica": "curiosity_gap"
+    },
+    {
+      "id": "c2",
+      "narracao": "Ela é feita de *neurônios artificiais* organizados em camadas. Cada ligação tem um peso, um número que diz quanto aquele sinal importa.",
+      "texto_tela": "Camadas e pesos",
+      "camera": {
+        "alvo": [
+          0,
+          3,
+          0
+        ],
+        "distancia": 11,
+        "elevacao": 15,
+        "azimute": [
+          10,
+          30
+        ]
+      },
+      "elementos": [
+        {
+          "id": "r-entrada",
+          "tipo": "rotulo",
+          "texto": "Entrada",
+          "subtexto": "foto, texto, som",
+          "posicao": [
+            -3.3,
+            5.2,
+            0
+          ],
+          "atraso": 0.8
+        },
+        {
+          "id": "r-saida",
+          "tipo": "rotulo",
+          "texto": "Saída",
+          "subtexto": "a resposta",
+          "posicao": [
+            3.3,
+            4.6,
+            0
+          ],
+          "atraso": 1.6
+        }
+      ],
+      "etapa": "curiosidade",
+      "tecnica": "progressao"
+    },
+    {
+      "id": "c3",
+      "narracao": "Quando damos um exemplo, o sinal atravessa a rede e ela arrisca uma *resposta*.",
+      "texto_tela": "O palpite",
+      "camera": {
+        "alvo": [
+          0,
+          3,
+          0
+        ],
+        "distancia": 10,
+        "elevacao": 8,
+        "azimute": [
+          30,
+          0
+        ]
+      },
+      "remover": [
+        "rede",
+        "r-entrada",
+        "r-saida"
+      ],
+      "elementos": [
+        {
+          "id": "rede2",
+          "tipo": "rede_neural",
+          "camadas_neuronios": [
+            3,
+            5,
+            5,
+            2
+          ],
+          "posicao": [
+            0,
+            3,
+            0
+          ],
+          "densidade_pulsos": 0.45,
+          "animacao": "nenhuma"
+        }
+      ],
+      "etapa": "explicacao",
+      "tecnica": "quebra_de_padrao"
+    },
+    {
+      "id": "c4",
+      "narracao": "Depois comparamos com a resposta certa. A diferença é o *erro*, e ele volta pela rede ajustando cada peso um pouquinho.",
+      "texto_tela": "Medir o erro",
+      "camera": {
+        "alvo": [
+          0,
+          3,
+          0
+        ],
+        "distancia": 11,
+        "elevacao": 14,
+        "azimute": [
+          0,
+          -20
+        ]
+      },
+      "elementos": [
+        {
+          "id": "seta-erro",
+          "tipo": "seta",
+          "de": [
+            3.6,
+            6,
+            0
+          ],
+          "para": [
+            -3.6,
+            6,
+            0
+          ],
+          "cor": "destaque",
+          "espessura": 0.09,
+          "atraso": 0.6
+        },
+        {
+          "id": "r-erro",
+          "tipo": "rotulo",
+          "texto": "Erro volta corrigindo",
+          "posicao": [
+            0,
+            6.7,
+            0
+          ],
+          "atraso": 1.2
+        }
+      ],
+      "etapa": "demonstracao",
+      "tecnica": "progressao"
+    },
+    {
+      "id": "c5",
+      "narracao": "Repita isso *milhões de vezes* e o erro despenca. O acerto não foi ensinado: foi ajustado.",
+      "texto_tela": "Treinar = repetir",
+      "camera": {
+        "alvo": [
+          0,
+          2.2,
+          0
+        ],
+        "distancia": 12,
+        "elevacao": 12,
+        "azimute": [
+          -10,
+          10
+        ]
+      },
+      "remover": [
+        "rede2",
+        "seta-erro",
+        "r-erro"
+      ],
+      "elementos": [
+        {
+          "id": "curva-erro",
+          "tipo": "grafico_linha",
+          "valores": [
+            9,
+            6.5,
+            4.8,
+            3.4,
+            2.5,
+            1.8,
+            1.4,
+            1.1,
+            0.9,
+            0.8
+          ],
+          "posicao": [
+            0,
+            0.4,
+            0
+          ],
+          "largura": 7,
+          "altura": 4,
+          "cor": "destaque",
+          "rotulo_final": "erro quase zero",
+          "atraso": 0.2,
+          "duracao_animacao": 3
+        },
+        {
+          "id": "r-eixo",
+          "tipo": "rotulo",
+          "texto": "Erro",
+          "subtexto": "ao longo do treino",
+          "posicao": [
+            -3.5,
+            5.1,
+            0
+          ],
+          "atraso": 0.4
+        }
+      ],
+      "etapa": "revelacao",
+      "tecnica": "surpresa"
+    },
+    {
+      "id": "c6",
+      "narracao": "Por isso a IA encontra *padrões*, mas não entende como nós. Dados ruins geram respostas ruins. Em que você confiaria numa IA?",
+      "texto_tela": "Padrões, não mágica",
+      "camera": {
+        "alvo": [
+          0,
+          3,
+          0
+        ],
+        "distancia": 12,
+        "elevacao": 18,
+        "azimute": [
+          20,
+          50
+        ]
+      },
+      "remover": [
+        "curva-erro",
+        "r-eixo"
+      ],
+      "elementos": [
+        {
+          "id": "rede3",
+          "tipo": "rede_neural",
+          "camadas_neuronios": [
+            4,
+            6,
+            6,
+            3
+          ],
+          "posicao": [
+            0,
+            3,
+            0
+          ],
+          "cor": "#2a9d8f",
+          "densidade_pulsos": 0.5
+        }
+      ],
+      "etapa": "fechamento",
+      "tecnica": "identificacao"
+    }
+  ],
+  "pilar": "ia",
+  "serie": "como_funciona",
+  "nivel": "basico",
+  "disciplinas": [
+    "Computação",
+    "Matemática",
+    "Neurociência"
+  ],
+  "pergunta_central": "Como uma máquina aprende sem ninguém programar a resposta?",
+  "loop_aberto": "Se ninguém ensina a resposta, de onde vem o acerto?"
+}

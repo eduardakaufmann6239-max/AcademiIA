@@ -1,0 +1,349 @@
+{
+  "titulo": "Como o dinheiro circula na economia?",
+  "pilar": "sistemas",
+  "serie": "entenda_o_sistema",
+  "nivel": "basico",
+  "formato": "curto",
+  "disciplinas": [
+    "Economia",
+    "Pensamento sistêmico"
+  ],
+  "publico": "público geral e estudantes do ensino médio",
+  "pergunta_central": "Por que uma decisão do Banco Central afeta o emprego de quem nem tem dívida?",
+  "loop_aberto": "Como uma mudança nos juros chega até o seu emprego?",
+  "legenda_post": "A economia é um sistema: famílias, empresas, governo e bancos estão ligados por fluxos de dinheiro. Mexa em uma peça e o efeito se espalha. Salve para entender as notícias de economia e siga para ver outros sistemas explicados.",
+  "hashtags": [
+    "#economia",
+    "#pensamentosistemico",
+    "#juros",
+    "#educacaofinanceira",
+    "#enem",
+    "#conhecimentoexplicado"
+  ],
+  "fontes": [
+    "Banco Central do Brasil — 'O que é a Selic' e Relatório de Política Monetária (bcb.gov.br)",
+    "Mankiw, N. G. — Introdução à Economia, cap. 'O diagrama de fluxo circular'",
+    "Blanchard, O. — Macroeconomia, cap. sobre política monetária e demanda agregada"
+  ],
+  "cenas": [
+    {
+      "id": "c1",
+      "etapa": "gancho",
+      "tecnica": "curiosity_gap",
+      "narracao": "Os juros subiram. E você pode perder o *emprego*?",
+      "texto_tela": "Juros sobem. E você?",
+      "camera": {
+        "alvo": [
+          0,
+          2.5,
+          0
+        ],
+        "distancia": 6.5,
+        "distancia_fim": 5.8,
+        "elevacao": 10,
+        "azimute": [
+          -30,
+          0
+        ]
+      },
+      "elementos": [
+        {
+          "id": "moedas",
+          "tipo": "moedas",
+          "x": -1.2,
+          "z": 0,
+          "quantidade": 14,
+          "pilhas": 2
+        },
+        {
+          "id": "seta-juros",
+          "tipo": "seta",
+          "de": [
+            1,
+            0.5,
+            0
+          ],
+          "para": [
+            1,
+            3.8,
+            0
+          ],
+          "cor": "destaque",
+          "espessura": 0.12,
+          "atraso": 0.4
+        }
+      ]
+    },
+    {
+      "id": "c2",
+      "etapa": "curiosidade",
+      "tecnica": "open_loop",
+      "narracao": "Parece exagero. Mas a economia é um *sistema*: tudo está ligado. Vamos montar esse sistema peça por peça.",
+      "texto_tela": "A economia é um sistema",
+      "camera": {
+        "alvo": [
+          0,
+          2.5,
+          0
+        ],
+        "distancia": 7.9,
+        "elevacao": 18,
+        "azimute": [
+          0,
+          20
+        ]
+      },
+      "remover": [
+        "moedas",
+        "seta-juros"
+      ],
+      "elementos": [
+        {
+          "id": "eco",
+          "tipo": "sistema",
+          "posicao": [
+            0,
+            2.6,
+            0
+          ],
+          "intervalo": 0.9,
+          "componentes": [
+            {
+              "id": "familias",
+              "nome": "Famílias",
+              "descricao": "trabalham e consomem",
+              "posicao": [
+                -2.2,
+                1.6,
+                0
+              ],
+              "cor": "#457b9d"
+            },
+            {
+              "id": "empresas",
+              "nome": "Empresas",
+              "descricao": "produzem e contratam",
+              "posicao": [
+                2.2,
+                1.6,
+                0
+              ],
+              "cor": "#2a9d8f",
+              "forma": "cubo"
+            },
+            {
+              "id": "bancos",
+              "nome": "Bancos",
+              "descricao": "guardam e emprestam",
+              "posicao": [
+                2.2,
+                -1.6,
+                0
+              ],
+              "cor": "#f4a261",
+              "forma": "cubo"
+            },
+            {
+              "id": "governo",
+              "nome": "Governo",
+              "descricao": "arrecada e gasta",
+              "posicao": [
+                -2.2,
+                -1.6,
+                0
+              ],
+              "cor": "#9b5de5"
+            }
+          ],
+          "conexoes": [
+            {
+              "de": "familias",
+              "para": "empresas",
+              "rotulo": "consumo"
+            },
+            {
+              "de": "empresas",
+              "para": "familias",
+              "rotulo": "salários"
+            },
+            {
+              "de": "familias",
+              "para": "bancos",
+              "rotulo": "poupança"
+            },
+            {
+              "de": "bancos",
+              "para": "empresas",
+              "rotulo": "crédito"
+            },
+            {
+              "de": "familias",
+              "para": "governo",
+              "rotulo": "impostos"
+            },
+            {
+              "de": "governo",
+              "para": "familias",
+              "rotulo": "serviços"
+            }
+          ],
+          "perturbar": {
+            "componente": "bancos",
+            "em": 21
+          }
+        }
+      ]
+    },
+    {
+      "id": "c3",
+      "etapa": "explicacao",
+      "tecnica": "progressao",
+      "narracao": "*Estrutura*: famílias, empresas, bancos e governo. *Organização*: cada um tem um papel e troca dinheiro com os outros.",
+      "texto_tela": "Estrutura e organização",
+      "camera": {
+        "alvo": [
+          0,
+          2.6,
+          0
+        ],
+        "distancia": 7.2,
+        "elevacao": 25,
+        "azimute": [
+          20,
+          -10
+        ]
+      }
+    },
+    {
+      "id": "c4",
+      "etapa": "explicacao",
+      "tecnica": "quebra_de_padrao",
+      "narracao": "*Funcionamento*: você recebe salário, consome, e esse consumo vira receita para as empresas, que pagam salários de novo. É um *ciclo*.",
+      "texto_tela": "Funcionamento",
+      "camera": {
+        "alvo": [
+          0,
+          2.8,
+          0
+        ],
+        "distancia": 5.4,
+        "elevacao": 8,
+        "azimute": [
+          -10,
+          10
+        ]
+      },
+      "destacar": [
+        "eco"
+      ]
+    },
+    {
+      "id": "c5",
+      "etapa": "revelacao",
+      "tecnica": "surpresa",
+      "narracao": "*Interdependência*: quando o Banco Central sobe a Selic, o crédito fica mais caro. As empresas investem menos, contratam menos... e o efeito chega às famílias.",
+      "texto_tela": "Interdependência",
+      "camera": {
+        "alvo": [
+          0,
+          2.6,
+          0
+        ],
+        "distancia": 7.6,
+        "elevacao": 30,
+        "azimute": [
+          10,
+          35
+        ]
+      },
+      "elementos": [
+        {
+          "id": "r-selic",
+          "tipo": "rotulo",
+          "texto": "Selic ↑",
+          "subtexto": "crédito mais caro",
+          "posicao": [
+            3.6,
+            0.2,
+            0
+          ],
+          "atraso": 0.2
+        }
+      ]
+    },
+    {
+      "id": "c6",
+      "etapa": "revelacao",
+      "tecnica": "progressao",
+      "narracao": "*Resultado*: menos consumo segura os preços. É por isso que juros altos são usados contra a *inflação*, e também por que têm um custo.",
+      "texto_tela": "Resultados",
+      "camera": {
+        "alvo": [
+          0,
+          2.4,
+          0
+        ],
+        "distancia": 7.9,
+        "elevacao": 15,
+        "azimute": [
+          35,
+          15
+        ]
+      },
+      "remover": [
+        "r-selic"
+      ],
+      "elementos": [
+        {
+          "id": "g-trade",
+          "tipo": "grafico_barras",
+          "valores": [
+            1.6,
+            2.2
+          ],
+          "rotulos": [
+            "Inflação ↓",
+            "Consumo ↓"
+          ],
+          "posicao": [
+            0,
+            -0.02,
+            2.4
+          ],
+          "escala": 0.7,
+          "cores": [
+            "#e63946",
+            "#457b9d"
+          ],
+          "atraso": 0.6,
+          "sufixo": "",
+          "mostrar_valores": false
+        }
+      ]
+    },
+    {
+      "id": "c7",
+      "etapa": "fechamento",
+      "tecnica": "identificacao",
+      "narracao": "Toda decisão econômica percorre o sistema inteiro. Na próxima notícia sobre juros, pergunte: *quem sente o efeito primeiro?*",
+      "texto_tela": "Quem sente primeiro?",
+      "camera": {
+        "alvo": [
+          0,
+          2.6,
+          0
+        ],
+        "distancia": 8.6,
+        "distancia_fim": 7.2,
+        "elevacao": 22,
+        "azimute": [
+          15,
+          -25
+        ]
+      },
+      "remover": [
+        "g-trade"
+      ]
+    }
+  ]
+}

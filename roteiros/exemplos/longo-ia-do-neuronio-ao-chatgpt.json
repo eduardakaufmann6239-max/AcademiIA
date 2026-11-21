@@ -1,0 +1,642 @@
+{
+  "titulo": "Do neurônio ao ChatGPT: como as máquinas aprenderam a aprender",
+  "pilar": "ia",
+  "serie": "conectando",
+  "nivel": "intermediario",
+  "formato": "longo",
+  "disciplinas": [
+    "Neurociência",
+    "Matemática",
+    "Computação"
+  ],
+  "publico": "curiosos e estudantes do ensino médio",
+  "pergunta_central": "Como uma ideia inspirada no cérebro virou a IA que conversa com você?",
+  "loop_aberto": "Se a IA só ajusta números, por que ela parece entender o que você escreve?",
+  "legenda_post": "Do neurônio biológico às redes que escrevem textos: neurociência, matemática e computação se conectam para explicar a IA moderna. Assista até o fim para a resposta da pergunta do início.",
+  "hashtags": [
+    "#inteligenciaartificial",
+    "#neurociencia",
+    "#matematica",
+    "#chatgpt",
+    "#ciencia",
+    "#conhecimentoexplicado"
+  ],
+  "fontes": [
+    "McCulloch, W. & Pitts, W. — 'A logical calculus of the ideas immanent in nervous activity' (1943)",
+    "Rosenblatt, F. — 'The Perceptron' (1958)",
+    "Rumelhart, Hinton & Williams — 'Learning representations by back-propagating errors', Nature (1986)",
+    "Vaswani et al. — 'Attention Is All You Need' (2017)",
+    "Goodfellow, Bengio & Courville — Deep Learning (MIT Press, 2016)"
+  ],
+  "cenas": [
+    {
+      "id": "c1",
+      "etapa": "gancho",
+      "tecnica": "curiosity_gap",
+      "narracao": "Uma máquina que só faz contas escreve poemas. *Como isso é possível?*",
+      "texto_tela": "Só contas... e poemas?",
+      "camera": {
+        "alvo": [
+          0,
+          3,
+          0
+        ],
+        "distancia": 16,
+        "distancia_fim": 13,
+        "elevacao": 12,
+        "azimute": [
+          -30,
+          10
+        ]
+      },
+      "elementos": [
+        {
+          "id": "rede-a",
+          "tipo": "rede_neural",
+          "camadas_neuronios": [
+            4,
+            7,
+            7,
+            7,
+            4
+          ],
+          "posicao": [
+            0,
+            3,
+            0
+          ],
+          "densidade_pulsos": 0.5,
+          "espacamento_vertical": 0.8
+        }
+      ]
+    },
+    {
+      "id": "c2",
+      "etapa": "curiosidade",
+      "tecnica": "open_loop",
+      "narracao": "Para responder, vamos fazer uma viagem em três capítulos: o *neurônio*, o *aprendizado* e a *linguagem*. E no fim, a resposta da pergunta.",
+      "texto_tela": "3 capítulos",
+      "camera": {
+        "alvo": [
+          0,
+          1.5,
+          0
+        ],
+        "distancia": 16,
+        "elevacao": 18,
+        "azimute": [
+          10,
+          30
+        ]
+      },
+      "remover": [
+        "rede-a"
+      ],
+      "elementos": [
+        {
+          "id": "lt",
+          "tipo": "linha_tempo",
+          "posicao": [
+            0,
+            1.5,
+            0
+          ],
+          "comprimento": 11,
+          "intervalo": 0.9,
+          "eventos": [
+            {
+              "ano": "1943",
+              "texto": "neurônio artificial"
+            },
+            {
+              "ano": "1958",
+              "texto": "perceptron"
+            },
+            {
+              "ano": "1986",
+              "texto": "retropropagação"
+            },
+            {
+              "ano": "2017",
+              "texto": "transformers"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "c3",
+      "etapa": "explicacao",
+      "tecnica": "storytelling",
+      "narracao": "Capítulo um: o neurônio. No seu cérebro, um neurônio recebe sinais pelos *dendritos* e, se o estímulo é forte o bastante, dispara um impulso pelo *axônio*.",
+      "texto_tela": "1. O neurônio",
+      "camera": {
+        "alvo": [
+          0,
+          2.5,
+          0
+        ],
+        "distancia": 11,
+        "elevacao": 14,
+        "azimute": [
+          -20,
+          15
+        ]
+      },
+      "remover": [
+        "lt"
+      ],
+      "elementos": [
+        {
+          "id": "neu",
+          "tipo": "neuronio",
+          "de": [
+            -4,
+            2.5,
+            0
+          ],
+          "para": [
+            4,
+            2.5,
+            0
+          ]
+        },
+        {
+          "id": "r-dend",
+          "tipo": "rotulo",
+          "texto": "Dendritos",
+          "subtexto": "recebem",
+          "posicao": [
+            -5,
+            3.8,
+            0
+          ],
+          "atraso": 1
+        },
+        {
+          "id": "r-axon",
+          "tipo": "rotulo",
+          "texto": "Axônio",
+          "subtexto": "transmite",
+          "posicao": [
+            1,
+            3.6,
+            0
+          ],
+          "atraso": 2.5
+        }
+      ]
+    },
+    {
+      "id": "c4",
+      "etapa": "explicacao",
+      "tecnica": "progressao",
+      "narracao": "Em 1943, McCulloch e Pitts transformaram isso em matemática: some as entradas multiplicadas por *pesos* e, se passar de um limite, a saída é um.",
+      "texto_tela": "Neurônio vira conta",
+      "camera": {
+        "alvo": [
+          0,
+          3,
+          0
+        ],
+        "distancia": 12,
+        "elevacao": 10,
+        "azimute": [
+          15,
+          -5
+        ]
+      },
+      "remover": [
+        "r-dend",
+        "r-axon"
+      ],
+      "elementos": [
+        {
+          "id": "eq1",
+          "tipo": "equacao",
+          "texto": "saída = 1 se (w₁x₁ + w₂x₂ + … ) > limite",
+          "subtexto": "pesos (w) dizem quanto cada entrada importa",
+          "posicao": [
+            0,
+            5.4,
+            0
+          ],
+          "atraso": 0.8
+        }
+      ]
+    },
+    {
+      "id": "c5",
+      "etapa": "explicacao",
+      "tecnica": "quebra_de_padrao",
+      "narracao": "Ligue milhares desses neurônios em camadas e você tem uma *rede neural*. Mas quem escolhe os pesos?",
+      "texto_tela": "Quem escolhe os pesos?",
+      "camera": {
+        "alvo": [
+          0,
+          3,
+          0
+        ],
+        "distancia": 15,
+        "elevacao": 16,
+        "azimute": [
+          -10,
+          20
+        ]
+      },
+      "remover": [
+        "neu",
+        "eq1"
+      ],
+      "elementos": [
+        {
+          "id": "rede-b",
+          "tipo": "rede_neural",
+          "camadas_neuronios": [
+            3,
+            6,
+            6,
+            2
+          ],
+          "posicao": [
+            0,
+            3,
+            0
+          ],
+          "pulsos": false,
+          "espacamento_vertical": 0.8
+        }
+      ]
+    },
+    {
+      "id": "c6",
+      "etapa": "demonstracao",
+      "tecnica": "progressao",
+      "narracao": "Capítulo dois: o aprendizado. A rede dá um palpite, medimos o *erro*, e um algoritmo chamado retropropagação ajusta cada peso um pouquinho na direção que diminui o erro.",
+      "texto_tela": "2. O aprendizado",
+      "camera": {
+        "alvo": [
+          0,
+          3,
+          0
+        ],
+        "distancia": 13,
+        "elevacao": 10,
+        "azimute": [
+          20,
+          -10
+        ]
+      },
+      "elementos": [
+        {
+          "id": "seta-err",
+          "tipo": "seta",
+          "de": [
+            4.2,
+            6,
+            0
+          ],
+          "para": [
+            -4.2,
+            6,
+            0
+          ],
+          "cor": "destaque",
+          "espessura": 0.1,
+          "atraso": 2
+        },
+        {
+          "id": "r-err",
+          "tipo": "rotulo",
+          "texto": "Retropropagação",
+          "subtexto": "o erro volta ajustando os pesos",
+          "posicao": [
+            0,
+            6.8,
+            0
+          ],
+          "atraso": 2.4
+        }
+      ]
+    },
+    {
+      "id": "c7",
+      "etapa": "demonstracao",
+      "tecnica": "surpresa",
+      "narracao": "Repita isso com *milhões de exemplos* e o erro cai. Ninguém escreveu as regras: elas surgiram dos dados.",
+      "texto_tela": "Regras que surgem dos dados",
+      "camera": {
+        "alvo": [
+          0,
+          2.5,
+          0
+        ],
+        "distancia": 13,
+        "elevacao": 12,
+        "azimute": [
+          -15,
+          10
+        ]
+      },
+      "remover": [
+        "rede-b",
+        "seta-err",
+        "r-err"
+      ],
+      "elementos": [
+        {
+          "id": "curva",
+          "tipo": "grafico_linha",
+          "valores": [
+            10,
+            7,
+            5.2,
+            3.9,
+            3,
+            2.3,
+            1.8,
+            1.4,
+            1.2,
+            1.05,
+            0.95
+          ],
+          "posicao": [
+            0,
+            0.5,
+            0
+          ],
+          "largura": 10,
+          "altura": 4.5,
+          "rotulo_final": "erro baixo",
+          "duracao_animacao": 3.5
+        }
+      ]
+    },
+    {
+      "id": "c8",
+      "etapa": "explicacao",
+      "tecnica": "storytelling",
+      "narracao": "Capítulo três: a linguagem. Para escrever, a IA transforma palavras em números e treina com uma tarefa simples: *adivinhar a próxima palavra*.",
+      "texto_tela": "3. A linguagem",
+      "camera": {
+        "alvo": [
+          0,
+          2,
+          0
+        ],
+        "distancia": 11,
+        "elevacao": 16,
+        "azimute": [
+          10,
+          30
+        ]
+      },
+      "remover": [
+        "curva"
+      ],
+      "elementos": [
+        {
+          "id": "w1",
+          "tipo": "cubo",
+          "posicao": [
+            -4.5,
+            1,
+            0
+          ],
+          "tamanho": 1,
+          "cor": "#457b9d",
+          "atraso": 0.2
+        },
+        {
+          "id": "w2",
+          "tipo": "cubo",
+          "posicao": [
+            -3,
+            1,
+            0
+          ],
+          "tamanho": 1,
+          "cor": "#457b9d",
+          "atraso": 0.4
+        },
+        {
+          "id": "w3",
+          "tipo": "cubo",
+          "posicao": [
+            -1.5,
+            1,
+            0
+          ],
+          "tamanho": 1,
+          "cor": "#457b9d",
+          "atraso": 0.6
+        },
+        {
+          "id": "w4",
+          "tipo": "cubo",
+          "posicao": [
+            0,
+            1,
+            0
+          ],
+          "tamanho": 1,
+          "cor": "#ffb703",
+          "atraso": 2.5
+        },
+        {
+          "id": "r-frase",
+          "tipo": "rotulo",
+          "texto": "\"O céu está ...\"",
+          "posicao": [
+            -3,
+            2.7,
+            0
+          ],
+          "atraso": 0.8
+        },
+        {
+          "id": "r-prox",
+          "tipo": "rotulo",
+          "texto": "azul?",
+          "subtexto": "a palavra mais provável",
+          "posicao": [
+            0,
+            2.7,
+            0
+          ],
+          "atraso": 2.8
+        }
+      ]
+    },
+    {
+      "id": "c9",
+      "etapa": "demonstracao",
+      "tecnica": "progressao",
+      "narracao": "Em 2017 surgiu o *transformer*, que usa um mecanismo de atenção: cada palavra 'olha' para as outras e descobre quais importam para o sentido.",
+      "texto_tela": "Atenção: palavras se olham",
+      "camera": {
+        "alvo": [
+          -1.5,
+          1.5,
+          0
+        ],
+        "distancia": 11,
+        "elevacao": 25,
+        "azimute": [
+          -10,
+          15
+        ]
+      },
+      "elementos": [
+        {
+          "id": "at1",
+          "tipo": "seta",
+          "de": [
+            0,
+            1.6,
+            0.3
+          ],
+          "para": [
+            -4.5,
+            1.6,
+            0.3
+          ],
+          "cor": "#ffb703",
+          "espessura": 0.05,
+          "atraso": 0.6
+        },
+        {
+          "id": "at2",
+          "tipo": "seta",
+          "de": [
+            0,
+            1.9,
+            0.3
+          ],
+          "para": [
+            -3,
+            1.9,
+            0.3
+          ],
+          "cor": "#ffb703",
+          "espessura": 0.05,
+          "atraso": 1
+        },
+        {
+          "id": "at3",
+          "tipo": "seta",
+          "de": [
+            0,
+            2.2,
+            0.3
+          ],
+          "para": [
+            -1.5,
+            2.2,
+            0.3
+          ],
+          "cor": "#ffb703",
+          "espessura": 0.05,
+          "atraso": 1.4
+        }
+      ]
+    },
+    {
+      "id": "c10",
+      "etapa": "revelacao",
+      "tecnica": "surpresa",
+      "narracao": "Agora a resposta. Para prever bem a próxima palavra em bilhões de textos, a rede precisa captar gramática, fatos e estilo. Os *padrões da linguagem* ficam guardados nos pesos.",
+      "texto_tela": "A resposta",
+      "camera": {
+        "alvo": [
+          0,
+          3,
+          0
+        ],
+        "distancia": 17,
+        "distancia_fim": 14,
+        "elevacao": 14,
+        "azimute": [
+          30,
+          0
+        ]
+      },
+      "remover": [
+        "w1",
+        "w2",
+        "w3",
+        "w4",
+        "r-frase",
+        "r-prox",
+        "at1",
+        "at2",
+        "at3"
+      ],
+      "elementos": [
+        {
+          "id": "rede-c",
+          "tipo": "rede_neural",
+          "camadas_neuronios": [
+            4,
+            7,
+            7,
+            7,
+            4
+          ],
+          "posicao": [
+            0,
+            3,
+            0
+          ],
+          "cor": "#2a9d8f",
+          "densidade_pulsos": 0.6,
+          "espacamento_vertical": 0.8
+        }
+      ]
+    },
+    {
+      "id": "c11",
+      "etapa": "revelacao",
+      "tecnica": "surpresa",
+      "narracao": "Por isso ela *parece* entender. Mas também erra com confiança: quando o padrão mais provável não é o verdadeiro, ela inventa. É a chamada *alucinação*.",
+      "texto_tela": "Parece entender. E erra.",
+      "camera": {
+        "alvo": [
+          0,
+          3,
+          0
+        ],
+        "distancia": 12,
+        "elevacao": 8,
+        "azimute": [
+          -10,
+          -30
+        ]
+      },
+      "destacar": [
+        "rede-c"
+      ]
+    },
+    {
+      "id": "c12",
+      "etapa": "fechamento",
+      "tecnica": "identificacao",
+      "narracao": "Recapitulando: um neurônio virou conta, a conta aprendeu com o erro, e prever palavras virou linguagem. Neurociência, matemática e computação juntas. E você: como checa o que uma IA te diz?",
+      "texto_tela": "Recapitulando",
+      "camera": {
+        "alvo": [
+          0,
+          3,
+          0
+        ],
+        "distancia": 16,
+        "distancia_fim": 13,
+        "elevacao": 20,
+        "azimute": [
+          0,
+          40
+        ]
+      }
+    }
+  ]
+}
