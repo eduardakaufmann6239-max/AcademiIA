@@ -1,0 +1,84 @@
+{
+  "descricao": "Um conceito, quatro áreas: entropia na termodinâmica, na mecânica estatística, na informação e na biologia.",
+  "entidades": [
+    {"id": "autor:rudolf-clausius", "dados": {"nome": "Rudolf Clausius", "nascimento": 1822, "morte": 1888}},
+    {"id": "autor:ludwig-boltzmann", "dados": {"nome": "Ludwig Boltzmann", "nascimento": 1844, "morte": 1906}},
+    {"id": "autor:claude-shannon", "dados": {"nome": "Claude E. Shannon", "nascimento": 1916, "morte": 2001}},
+    {"id": "autor:edwin-jaynes", "dados": {"nome": "Edwin T. Jaynes", "nascimento": 1922, "morte": 1998}},
+    {"id": "autor:erwin-schrodinger", "dados": {"nome": "Erwin Schrödinger", "nascimento": 1887, "morte": 1961}},
+
+    {"id": "periodico:annalen-der-physik", "dados": {"nome": "Annalen der Physik"}},
+    {"id": "periodico:wiener-berichte", "dados": {"nome": "Sitzungsberichte der Kaiserlichen Akademie der Wissenschaften, Wien"}},
+    {"id": "periodico:bell-system-technical-journal", "dados": {"nome": "Bell System Technical Journal"}},
+    {"id": "periodico:physical-review", "dados": {"nome": "Physical Review"}},
+
+    {"id": "obra:clausius-1865", "dados": {"titulo": "Über verschiedene für die Anwendung bequeme Formen der Hauptgleichungen der mechanischen Wärmetheorie", "ano": 1865, "tipo_obra": "artigo", "idioma": "de", "licenca": "dominio_publico", "tipo_evidencia": "teoria"}},
+    {"id": "obra:boltzmann-1877", "dados": {"titulo": "Über die Beziehung zwischen dem zweiten Hauptsatze der mechanischen Wärmetheorie und der Wahrscheinlichkeitsrechnung respektive den Sätzen über das Wärmegleichgewicht", "ano": 1877, "tipo_obra": "artigo", "idioma": "de", "volume": "76", "licenca": "dominio_publico", "tipo_evidencia": "teoria"}},
+    {"id": "obra:shannon-1948", "dados": {"titulo": "A Mathematical Theory of Communication", "ano": 1948, "tipo_obra": "artigo", "doi": "10.1002/j.1538-7305.1948.tb01338.x", "revisado_por_pares": true, "tipo_evidencia": "prova_formal"}},
+    {"id": "obra:jaynes-1957", "dados": {"titulo": "Information Theory and Statistical Mechanics", "ano": 1957, "tipo_obra": "artigo", "doi": "10.1103/PhysRev.106.620", "revisado_por_pares": true, "tipo_evidencia": "teoria"}},
+    {"id": "obra:what-is-life-1944", "dados": {"titulo": "What Is Life? The Physical Aspect of the Living Cell", "ano": 1944, "tipo_obra": "livro", "editora": "Cambridge University Press", "tipo_evidencia": "argumento_filosofico"}},
+
+    {"id": "conceito:entropia-termodinamica", "dados": {"nome": "Entropia termodinâmica", "sinonimos": ["entropia", "segunda lei", "entropy"]}},
+    {"id": "conceito:entropia-estatistica", "dados": {"nome": "Entropia estatística (de Boltzmann)", "sinonimos": ["entropia", "microestados"]}},
+    {"id": "conceito:entropia-da-informacao", "dados": {"nome": "Entropia da informação (de Shannon)", "sinonimos": ["entropia", "informação", "information entropy"]}},
+    {"id": "conceito:entropia-negativa", "dados": {"nome": "Entropia negativa (neguentropia) nos seres vivos", "sinonimos": ["entropia", "neguentropia", "vida"]}},
+    {"id": "conceito:informacao", "dados": {"nome": "Informação"}},
+
+    {"id": "afirm:clausius-entropia-maxima", "dados": {"enunciado": "A entropia do universo tende a um máximo.", "tipo_evidencia": "teoria", "localizador": "conclusão do artigo (introdução do termo 'Entropie')"}},
+    {"id": "afirm:boltzmann-microestados", "dados": {"enunciado": "A entropia de um macroestado é proporcional ao logaritmo do número de microestados compatíveis com ele.", "tipo_evidencia": "teoria", "limitacoes": ["A forma S = k log W foi escrita assim por Max Planck, não por Boltzmann."]}},
+    {"id": "afirm:shannon-entropia-informacao", "dados": {"enunciado": "A quantidade de informação produzida por uma fonte pode ser medida por H = −Σ p_i log p_i, que limita a compressão sem perdas.", "tipo_evidencia": "prova_formal", "localizador": "Parte I, seção 6"}},
+    {"id": "afirm:jaynes-maxent", "dados": {"enunciado": "A mecânica estatística pode ser derivada como inferência pelo princípio da máxima entropia de Shannon.", "tipo_evidencia": "teoria", "localizador": "Phys. Rev. 106:620"}},
+    {"id": "afirm:schrodinger-neguentropia", "dados": {"enunciado": "Os organismos vivos mantêm sua ordem extraindo 'entropia negativa' do ambiente.", "tipo_evidencia": "argumento_filosofico", "localizador": "Cap. 6"}},
+    {"id": "afirm:schrodinger-cristal-aperiodico", "dados": {"enunciado": "O portador da informação hereditária deve ser um 'cristal aperiódico' capaz de codificar instruções.", "tipo_evidencia": "argumento_filosofico", "localizador": "Cap. 1–2"}}
+  ],
+  "relacoes": [
+    ["autor:rudolf-clausius", "autor_de", "obra:clausius-1865"],
+    ["autor:ludwig-boltzmann", "autor_de", "obra:boltzmann-1877"],
+    ["autor:claude-shannon", "autor_de", "obra:shannon-1948"],
+    ["autor:edwin-jaynes", "autor_de", "obra:jaynes-1957"],
+    ["autor:erwin-schrodinger", "autor_de", "obra:what-is-life-1944"],
+    ["obra:clausius-1865", "publicado_em", "periodico:annalen-der-physik"],
+    ["obra:boltzmann-1877", "publicado_em", "periodico:wiener-berichte"],
+    ["obra:shannon-1948", "publicado_em", "periodico:bell-system-technical-journal"],
+    ["obra:jaynes-1957", "publicado_em", "periodico:physical-review"],
+
+    ["obra:clausius-1865", "apresenta", "afirm:clausius-entropia-maxima"],
+    ["obra:boltzmann-1877", "apresenta", "afirm:boltzmann-microestados"],
+    ["obra:shannon-1948", "apresenta", "afirm:shannon-entropia-informacao"],
+    ["obra:jaynes-1957", "apresenta", "afirm:jaynes-maxent"],
+    ["obra:what-is-life-1944", "apresenta", "afirm:schrodinger-neguentropia"],
+    ["obra:what-is-life-1944", "apresenta", "afirm:schrodinger-cristal-aperiodico"],
+
+    ["afirm:clausius-entropia-maxima", "sobre", "conceito:entropia-termodinamica"],
+    ["afirm:boltzmann-microestados", "sobre", "conceito:entropia-estatistica"],
+    ["afirm:shannon-entropia-informacao", "sobre", "conceito:entropia-da-informacao"],
+    ["afirm:shannon-entropia-informacao", "sobre", "conceito:informacao"],
+    ["afirm:jaynes-maxent", "sobre", "conceito:entropia-estatistica"],
+    ["afirm:jaynes-maxent", "sobre", "conceito:entropia-da-informacao"],
+    ["afirm:schrodinger-neguentropia", "sobre", "conceito:entropia-negativa"],
+    ["afirm:schrodinger-cristal-aperiodico", "sobre", "conceito:hereditariedade"],
+    ["afirm:schrodinger-cristal-aperiodico", "sobre", "conceito:informacao"],
+
+    ["afirm:boltzmann-microestados", "desenvolve", "afirm:clausius-entropia-maxima"],
+    ["afirm:jaynes-maxent", "desenvolve", "afirm:shannon-entropia-informacao"],
+    ["afirm:jaynes-maxent", "desenvolve", "afirm:boltzmann-microestados"],
+    ["afirm:schrodinger-neguentropia", "desenvolve", "afirm:clausius-entropia-maxima"],
+    ["obra:what-is-life-1944", "influenciou", "autor:james-watson", {"nota": "Watson relatou que o livro despertou seu interesse pelo gene"}],
+    ["obra:what-is-life-1944", "influenciou", "autor:francis-crick"],
+    ["afirm:watson-crick-dupla-helice", "depende_de", "afirm:schrodinger-cristal-aperiodico", {"nota": "dependência conceitual (a ideia de um código hereditário em estrutura molecular), não evidencial"}],
+
+    ["conceito:entropia-termodinamica", "traduz_para", "conceito:entropia-estatistica", {"ponte": "Boltzmann (1877)"}],
+    ["conceito:entropia-estatistica", "traduz_para", "conceito:entropia-da-informacao", {"ponte": "Jaynes (1957)"}],
+    ["conceito:entropia-termodinamica", "traduz_para", "conceito:entropia-negativa", {"ponte": "Schrödinger (1944)"}]
+  ],
+  "classificacoes": [
+    ["afirm:clausius-entropia-maxima", ["Ciências Naturais", "Física", "Termodinâmica", "Segunda lei", "Entropia"]],
+    ["afirm:boltzmann-microestados", ["Ciências Naturais", "Física", "Mecânica estatística", "Entropia de Boltzmann"]],
+    ["afirm:jaynes-maxent", ["Ciências Naturais", "Física", "Mecânica estatística", "Máxima entropia"]],
+    ["afirm:jaynes-maxent", ["Ciências Formais e da Computação", "Estatística", "Inferência", "Máxima entropia"]],
+    ["afirm:shannon-entropia-informacao", ["Ciências Formais e da Computação", "Ciência da Computação", "Teoria da informação", "Entropia de Shannon"]],
+    ["afirm:schrodinger-neguentropia", ["Ciências Naturais", "Biologia", "Biofísica", "Termodinâmica dos seres vivos"]],
+    ["afirm:schrodinger-cristal-aperiodico", ["Ciências Naturais", "Biologia", "Biologia molecular", "Estrutura de ácidos nucleicos", "Precursores conceituais"]],
+    ["afirm:schrodinger-cristal-aperiodico", ["Humanidades", "História", "História das ciências", "Física e biologia no século XX"]]
+  ]
+}

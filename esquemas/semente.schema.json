@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://atlas-vivo.example/esquemas/semente.schema.json",
+  "title": "Pacote de semente do Atlas Vivo do Conhecimento",
+  "type": "object",
+  "properties": {
+    "descricao": {"type": "string"},
+    "entidades": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "dados"],
+        "properties": {
+          "id": {"type": "string", "pattern": "^(afirm|obra|autor|conceito|metodo|evento|controv|proposta|periodico|tax):[a-z0-9-]+$"},
+          "dados": {"type": "object"}
+        }
+      }
+    },
+    "relacoes": {
+      "type": "array",
+      "items": {
+        "type": "array",
+        "minItems": 3,
+        "maxItems": 4,
+        "prefixItems": [
+          {"type": "string"},
+          {"enum": ["autor_de", "publicado_em", "afiliado_a", "apresenta", "sustentada_por", "usa_metodo",
+                    "tem_limitacao", "parte_de", "cita", "corrobora", "contradiz", "critica", "responde_a",
+                    "replica", "sintetiza", "desenvolve", "supera", "retrata", "depende_de", "aplica_em",
+                    "influenciou", "sobre", "traduz_para", "classificado_em", "subnivel_de", "ocorreu_em"]},
+          {"type": "string"},
+          {"type": "object"}
+        ]
+      }
+    },
+    "classificacoes": {
+      "type": "array",
+      "items": {
+        "type": "array",
+        "prefixItems": [{"type": "string"}, {"type": "array", "items": {"type": "string"}, "minItems": 1}],
+        "minItems": 2,
+        "maxItems": 2
+      }
+    }
+  },
+  "required": ["entidades"]
+}
