@@ -1,0 +1,529 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rota · Oportunidades</title>
+<meta name="description" content="Catálogo curado de oportunidades estudantis nacionais e internacionais com ranking transparente de relevância e custo-benefício.">
+<style>
+:root{
+  --bg:#f6f5f1;--surface:#ffffff;--surface-2:#efede7;--text:#1d1c19;--muted:#6b6860;--line:#dedad1;
+  --accent:#1f6f5c;--accent-ink:#ffffff;--accent-soft:#dcefe8;--warn:#a5621b;--warn-soft:#f6e8d6;--bad:#a33b32;--bad-soft:#f5dedb;
+  --radius:12px;--shadow:0 1px 2px rgba(0,0,0,.05),0 4px 14px rgba(0,0,0,.04);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#141412;--surface:#1d1d1a;--surface-2:#262622;--text:#ecebe6;--muted:#a19e95;--line:#34332e;
+  --accent:#5cc2a6;--accent-ink:#0d1f1a;--accent-soft:#1f3a33;--warn:#e0a35c;--warn-soft:#3a2d1c;--bad:#e5867c;--bad-soft:#3d2421;--shadow:none;}}
+:root[data-theme="dark"]{
+  --bg:#141412;--surface:#1d1d1a;--surface-2:#262622;--text:#ecebe6;--muted:#a19e95;--line:#34332e;
+  --accent:#5cc2a6;--accent-ink:#0d1f1a;--accent-soft:#1f3a33;--warn:#e0a35c;--warn-soft:#3a2d1c;--bad:#e5867c;--bad-soft:#3d2421;--shadow:none;}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font:15px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+a{color:var(--accent)}
+header{padding:28px 16px 12px;max-width:1200px;margin:0 auto}
+header h1{margin:0;font-size:28px;letter-spacing:-.02em}
+header p{margin:4px 0 0;color:var(--muted);max-width:720px}
+nav.tabs{display:flex;gap:6px;flex-wrap:wrap;max-width:1200px;margin:8px auto 0;padding:0 16px}
+nav.tabs button{border:1px solid var(--line);background:var(--surface);color:var(--text);padding:8px 14px;border-radius:999px;cursor:pointer;font:inherit}
+nav.tabs button[aria-selected="true"]{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+main{max-width:1200px;margin:0 auto;padding:16px}
+.layout{display:grid;grid-template-columns:300px 1fr;gap:16px;align-items:start}
+@media (max-width:860px){.layout{grid-template-columns:1fr}}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:16px;box-shadow:var(--shadow)}
+.panel h2{font-size:15px;margin:0 0 10px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+label{display:block;font-size:13px;color:var(--muted);margin:10px 0 4px}
+input,select{width:100%;padding:8px 10px;border:1px solid var(--line);border-radius:8px;background:var(--surface);color:var(--text);font:inherit}
+.check{display:flex;align-items:center;gap:8px;color:var(--text);font-size:14px;margin:8px 0}
+.check input{width:auto}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{border:1px solid var(--line);background:var(--surface-2);color:var(--text);padding:4px 10px;border-radius:999px;font-size:13px;cursor:pointer;user-select:none}
+.chip.on{background:var(--accent-soft);border-color:var(--accent);color:var(--text)}
+.toolbar{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:12px}
+.toolbar .grow{flex:1;min-width:200px}
+.btn{border:1px solid var(--line);background:var(--surface);color:var(--text);padding:8px 12px;border-radius:8px;cursor:pointer;font:inherit;white-space:nowrap}
+.btn.primary{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.count{color:var(--muted);font-size:14px}
+.cards{display:grid;gap:12px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:16px;box-shadow:var(--shadow);display:grid;grid-template-columns:1fr auto;gap:12px}
+.card.inel{opacity:.62}
+.card h3{margin:0;font-size:17px}
+.org{color:var(--muted);font-size:13px}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}
+.tag{font-size:12px;padding:2px 8px;border-radius:6px;background:var(--surface-2);color:var(--muted)}
+.tag.good{background:var(--accent-soft);color:var(--text)}
+.tag.warn{background:var(--warn-soft);color:var(--warn)}
+.tag.bad{background:var(--bad-soft);color:var(--bad)}
+.score{text-align:right;min-width:110px}
+.score .big{font-size:30px;font-weight:700;line-height:1;font-variant-numeric:tabular-nums}
+.score .lbl{font-size:12px;color:var(--muted)}
+.score .cb{margin-top:8px;font-size:14px;font-variant-numeric:tabular-nums}
+.meta{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:4px 16px;font-size:13px;margin-top:4px}
+.meta b{font-weight:600}
+details{margin-top:8px;font-size:13px}
+summary{cursor:pointer;color:var(--accent)}
+.bar{height:6px;background:var(--surface-2);border-radius:3px;overflow:hidden;margin:2px 0 6px}
+.bar span{display:block;height:100%;background:var(--accent)}
+.why{display:grid;grid-template-columns:130px 1fr 44px;gap:6px;align-items:center}
+.card-actions{grid-column:1/-1;display:flex;gap:8px;flex-wrap:wrap}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th,td{border-bottom:1px solid var(--line);padding:8px;text-align:left;vertical-align:top}
+th{color:var(--muted);font-weight:600;width:180px}
+.tablewrap{overflow-x:auto}
+.empty{padding:32px;text-align:center;color:var(--muted)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media (max-width:760px){.grid2{grid-template-columns:1fr}}
+.total{font-size:28px;font-weight:700;font-variant-numeric:tabular-nums}
+.muted{color:var(--muted)}
+.hidden{display:none!important}
+footer{max-width:1200px;margin:24px auto;padding:0 16px;color:var(--muted);font-size:13px}
+.formula{background:var(--surface-2);border-radius:8px;padding:12px;font-family:ui-monospace,Menlo,monospace;font-size:13px;overflow-x:auto}
+.cmpbar{position:sticky;bottom:12px;margin-top:12px;display:flex;gap:8px;align-items:center;justify-content:space-between;background:var(--surface);border:1px solid var(--accent);border-radius:var(--radius);padding:10px 14px;box-shadow:var(--shadow)}
+ol.check-list li{margin:6px 0}
+</style>
+</head>
+<body>
+<header>
+  <h1>Rota</h1>
+  <p>Seu mapa de oportunidades estudantis: olimpíadas, bolsas, intercâmbios, feiras, hackathons e pesquisa, ordenados por compatibilidade com o seu perfil e por custo-benefício real.</p>
+</header>
+<nav class="tabs" role="tablist">
+  <button role="tab" data-tab="catalogo" aria-selected="true">Catálogo</button>
+  <button role="tab" data-tab="comparar" aria-selected="false">Comparar <span id="cmpCount"></span></button>
+  <button role="tab" data-tab="custo" aria-selected="false">Calculadora de custo</button>
+  <button role="tab" data-tab="checklist" aria-selected="false">Checklist</button>
+  <button role="tab" data-tab="metodo" aria-selected="false">Como o ranking funciona</button>
+</nav>
+
+<main>
+<!-- CATÁLOGO -->
+<section id="tab-catalogo">
+ <div class="layout">
+  <aside class="panel">
+    <h2>Seu perfil</h2>
+    <label for="pNivel">Nível de ensino</label>
+    <select id="pNivel">
+      <option value="">Qualquer</option>
+      <option value="EF2">Ensino Fundamental II</option>
+      <option value="EM" selected>Ensino Médio</option>
+      <option value="GRAD">Graduação</option>
+      <option value="POS">Pós-graduação / recém-formado</option>
+    </select>
+    <label for="pIdade">Idade</label>
+    <input id="pIdade" type="number" min="10" max="60" value="16">
+    <label for="pIngles">Inglês</label>
+    <select id="pIngles">
+      <option value="0">Nenhum</option><option value="1">Básico</option>
+      <option value="2" selected>Intermediário</option><option value="3">Avançado</option>
+    </select>
+    <label for="pOrc">Orçamento disponível (R$)</label>
+    <input id="pOrc" type="number" min="0" step="500" value="1000">
+    <label for="pObj">Objetivo principal</label>
+    <select id="pObj">
+      <option value="universidade">Entrar numa boa universidade (Brasil)</option>
+      <option value="exterior">Estudar no exterior</option>
+      <option value="pesquisa">Pesquisa e ciência</option>
+      <option value="carreira">Carreira e tecnologia</option>
+      <option value="lideranca">Liderança e impacto social</option>
+    </select>
+    <label>Áreas de interesse</label>
+    <div class="chips" id="pAreas"></div>
+    <div class="check"><input type="checkbox" id="pPublica" checked><label for="pPublica" style="margin:0;color:var(--text)">Estudo em escola pública</label></div>
+    <div class="check"><input type="checkbox" id="pRenda"><label for="pRenda" style="margin:0;color:var(--text)">Baixa renda familiar</label></div>
+    <label for="pHora">Valor da sua hora (R$) <span title="Usado para converter tempo de preparação em custo">ⓘ</span></label>
+    <input id="pHora" type="number" min="0" step="5" value="15">
+  </aside>
+
+  <div>
+    <div class="toolbar">
+      <input class="grow" id="fBusca" type="search" placeholder="Buscar por nome, organização, país…">
+      <select id="fOrdem" style="width:auto">
+        <option value="score">Ordenar: compatibilidade</option>
+        <option value="cb">Ordenar: custo-benefício</option>
+        <option value="custo">Ordenar: menor custo</option>
+        <option value="prazo">Ordenar: prazo mais próximo</option>
+        <option value="prestigio">Ordenar: prestígio</option>
+      </select>
+    </div>
+    <div class="panel" style="margin-bottom:12px">
+      <div class="grid2">
+        <div>
+          <label style="margin-top:0">Tipo</label>
+          <div class="chips" id="fTipos"></div>
+        </div>
+        <div>
+          <label style="margin-top:0">Financiamento</label>
+          <div class="chips" id="fFin"></div>
+          <label>Abrangência e formato</label>
+          <div class="chips" id="fEsc"></div>
+        </div>
+      </div>
+      <div class="check"><input type="checkbox" id="fElig" checked><label for="fElig" style="margin:0;color:var(--text)">Mostrar só o que eu posso fazer</label></div>
+      <div class="check"><input type="checkbox" id="fPrazo"><label for="fPrazo" style="margin:0;color:var(--text)">Inscrição costuma abrir nos próximos 60 dias</label></div>
+    </div>
+    <div class="toolbar">
+      <span class="count" id="count"></span>
+      <span class="grow"></span>
+      <button class="btn" id="btnCsv">Exportar CSV</button>
+      <button class="btn" id="btnJson">Exportar JSON</button>
+    </div>
+    <div class="cards" id="cards"></div>
+    <div class="cmpbar hidden" id="cmpBar"><span id="cmpBarTxt"></span><button class="btn primary" id="cmpGo">Comparar agora</button></div>
+  </div>
+ </div>
+</section>
+
+<!-- COMPARAR -->
+<section id="tab-comparar" class="hidden">
+  <div class="panel">
+    <h2>Comparação lado a lado</h2>
+    <p class="muted">Marque até 3 oportunidades no catálogo com “Comparar”.</p>
+    <div class="tablewrap" id="cmpTable"></div>
+  </div>
+</section>
+
+<!-- CUSTO -->
+<section id="tab-custo" class="hidden">
+  <div class="grid2">
+    <div class="panel">
+      <h2>Custo total de um programa presencial</h2>
+      <p class="muted">A taxa do programa é só uma parte. Preencha com o que o edital diz que está coberto (coloque 0 no que for pago pela bolsa).</p>
+      <div id="calc"></div>
+    </div>
+    <div class="panel">
+      <h2>Resultado</h2>
+      <div class="total" id="calcTotal">R$ 0</div>
+      <p class="muted" id="calcSub"></p>
+      <div id="calcBreak"></div>
+      <p class="muted" style="font-size:13px">Valores de referência são estimativas de nov/2026 (câmbio US$ 1 ≈ R$ 5,50; € 1 ≈ R$ 6,00). Passaporte comum: R$ 257,25 (Polícia Federal). Visto de estudante dos EUA (F/J): taxa consular de US$ 185, mais a SEVIS quando houver.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CHECKLIST -->
+<section id="tab-checklist" class="hidden">
+  <div class="grid2">
+    <div class="panel">
+      <h2>Documentos: o que exige antecedência</h2>
+      <ol class="check-list">
+        <li><b>Passaporte:</b> peça já. Agendamento na PF pode levar semanas; menor de 18 anos precisa de autorização dos pais.</li>
+        <li><b>Teste de inglês</b> (TOEFL/IELTS/Duolingo): 1–2 meses entre agendar e receber o resultado. Vários programas aceitam Duolingo English Test, que é mais barato.</li>
+        <li><b>Cartas de recomendação:</b> peça a professores com 3–4 semanas de prazo e entregue um resumo do que fez.</li>
+        <li><b>Histórico escolar</b> (às vezes com tradução juramentada): 1–3 semanas.</li>
+        <li><b>Comprovante de renda</b> da família, para bolsas por necessidade.</li>
+        <li><b>Visto:</b> só após a aprovação, mas a entrevista consular pode ter fila de meses.</li>
+      </ol>
+    </div>
+    <div class="panel">
+      <h2>Candidatura padrão</h2>
+      <ol class="check-list">
+        <li>Ler o edital inteiro e anotar requisitos eliminatórios.</li>
+        <li>Currículo de uma página com atividades, prêmios e projetos.</li>
+        <li>Carta de motivação específica para o programa, sem texto genérico.</li>
+        <li>Portfólio ou projeto, quando pedido.</li>
+        <li>Revisão por outra pessoa antes de enviar.</li>
+        <li>Enviar 48 h antes do prazo: sistemas caem no último dia.</li>
+      </ol>
+      <h2 style="margin-top:16px">Sinais de golpe</h2>
+      <ul>
+        <li>“Aprovação garantida” ou cobrança para “acessar” bolsa pública.</li>
+        <li>Pagamento via Pix para pessoa física ou fora do site oficial.</li>
+        <li>Agência que não aparece no site do próprio programa.</li>
+        <li>Urgência artificial (“vaga só até hoje”).</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- MÉTODO -->
+<section id="tab-metodo" class="hidden">
+  <div class="panel">
+    <h2>Como o ranking funciona</h2>
+    <p>São dois números, porque respondem a perguntas diferentes:</p>
+    <p><b>Compatibilidade (0–100)</b>: quanto esta oportunidade faz sentido para <i>você</i>.</p>
+    <div class="formula">Compatibilidade = 100 × (0,35·Relevância + 0,25·Valor + 0,15·Chance + 0,25·Acessibilidade)</div>
+    <ul>
+      <li><b>Relevância</b>: sobreposição com suas áreas (60%) + aderência do tipo de programa ao seu objetivo (40%).</li>
+      <li><b>Valor</b>: 0,45·benefícios concretos + 0,35·prestígio + 0,20·credibilidade da organização (notas de 1 a 5 atribuídas pela curadoria).</li>
+      <li><b>Chance</b>: estimativa de seletividade (vagas ÷ candidatos e barreiras), de 1 = muito seletivo a 5 = aberto a todos.</li>
+      <li><b>Acessibilidade</b>: 1 ÷ (1 + custo efetivo ÷ R$ 3.000), com bônus quando o programa prioriza escola pública ou baixa renda e você se encaixa.</li>
+    </ul>
+    <p><b>Custo-benefício (0–10)</b>: quanto valor você recebe por real e hora investidos.</p>
+    <div class="formula">Custo efetivo = custo médio em dinheiro + horas de preparação × valor da sua hora<br>Custo-benefício = 10 × (Valor × (0,5 + 0,5·Chance)) ÷ (1 + log₁₀(1 + custo efetivo ÷ 500))</div>
+    <p>O logaritmo evita que um programa de R$ 40 mil seja apenas “40× pior” que um de R$ 1 mil e faz com que a diferença entre R$ 0 e R$ 1.000 pese mais que entre R$ 30 mil e R$ 31 mil, como acontece no bolso de uma família.</p>
+    <p><b>Elegibilidade</b> é um filtro, não uma nota: nível, idade, inglês, exigência de escola pública e orçamento eliminam a oportunidade (ela aparece esmaecida, com o motivo, se você desmarcar o filtro).</p>
+    <h2 style="margin-top:20px">Curadoria e verificação</h2>
+    <ul>
+      <li><span class="tag good">confirmado</span> dados conferidos na fonte oficial na data indicada.</li>
+      <li><span class="tag warn">parcial</span> o programa existe e o link é oficial, mas datas ou valores são do ciclo anterior.</li>
+      <li><span class="tag bad">a verificar</span> há sinais de mudança: confira antes de se planejar.</li>
+    </ul>
+    <p class="muted">Custos são estimativas do desembolso típico de um estudante selecionado, em reais. Janelas de inscrição são as habituais; o edital de cada ano manda. Encontrou erro? Abra uma issue no repositório.</p>
+  </div>
+</section>
+</main>
+<footer>Rota MVP · dados verificados em nov/2026 · sempre confirme no link oficial antes de se inscrever.</footer>
+
+<script id="dados">
+/* Base curada. Custos em R$ (desembolso típico do estudante selecionado). meses = meses em que a inscrição costuma estar aberta.
+   ingles: 0 nenhum, 1 básico, 2 intermediário, 3 avançado. publica: "exclusiva" | "prioriza" | null.
+   prestigio/beneficio/credibilidade/chance: 1–5 (chance 5 = aberto a todos). horas = preparação + inscrição estimadas. */
+const OPORTUNIDADES = [
+ {id:"obmep",nome:"OBMEP – Olimpíada Brasileira de Matemática das Escolas Públicas",org:"IMPA / SBM",pais:"Brasil",escopo:"nacional",tipo:"olimpiada",areas:["matematica"],niveis:["EF2","EM"],idade:null,ingles:0,publica:null,baixaRenda:false,modalidade:"presencial",meses:[2,3],janela:"Escola inscreve em fev–mar; 1ª fase em junho, 2ª em outubro",duracao:"1 ano (2 fases)",custoInscricao:0,custo:[0,0],fin:"gratuito",beneficios:["Medalhas e menções","Bolsa PIC (iniciação científica júnior)","Vagas olímpicas em universidades (ex.: Unicamp, USP)"],prestigio:4,beneficio:5,credibilidade:5,chance:5,horas:40,link:"https://www.obmep.org.br",status:"confirmado",verificado:"2026-11",notas:"Gratuita para escola pública; escola privada paga taxa. Edição 2026: inscrições 04/02–16/03, 1ª fase 09/06, 2ª fase 17/10, premiados em 15/12. O aluno não se inscreve sozinho: peça à escola."},
+ {id:"obf",nome:"OBF – Olimpíada Brasileira de Física",org:"Sociedade Brasileira de Física",pais:"Brasil",escopo:"nacional",tipo:"olimpiada",areas:["fisica"],niveis:["EF2","EM"],idade:null,ingles:0,publica:null,baixaRenda:false,modalidade:"presencial",meses:[3,4],janela:"Escolas inscrevem em mar–abr",duracao:"3 fases ao longo do ano",custoInscricao:0,custo:[0,30],fin:"gratuito",beneficios:["Medalhas","Seletiva para olimpíadas internacionais (IPhO, OIbF)","Vagas olímpicas"],prestigio:4,beneficio:4,credibilidade:5,chance:4,horas:50,link:"https://www.sbfisica.org.br/v1/olimpiada/",status:"parcial",verificado:"2026-11",notas:"Gratuita para escolas públicas; taxa por escola para privadas."},
+ {id:"obi",nome:"OBI – Olimpíada Brasileira de Informática",org:"SBC / Unicamp",pais:"Brasil",escopo:"nacional",tipo:"olimpiada",areas:["tecnologia","matematica"],niveis:["EF2","EM","GRAD"],idade:null,ingles:0,publica:null,baixaRenda:false,modalidade:"online",meses:[3,4,5],janela:"Inscrição pela escola em mar–mai",duracao:"3 fases",custoInscricao:0,custo:[0,0],fin:"gratuito",beneficios:["Medalhas","Curso de programação na Unicamp para medalhistas","Seletiva para a IOI"],prestigio:4,beneficio:4,credibilidade:5,chance:4,horas:60,link:"https://olimpiada.ic.unicamp.br",status:"parcial",verificado:"2026-11",notas:"Modalidade Iniciação não exige programação. Inclui nível universitário."},
+ {id:"oba",nome:"OBA – Olimpíada Brasileira de Astronomia e Astronáutica",org:"SAB / AEB",pais:"Brasil",escopo:"nacional",tipo:"olimpiada",areas:["fisica","engenharia"],niveis:["EF2","EM"],idade:null,ingles:0,publica:null,baixaRenda:false,modalidade:"presencial",meses:[1,2,3],janela:"Escolas inscrevem no 1º trimestre; prova em maio",duracao:"Prova única + seletivas",custoInscricao:0,custo:[0,0],fin:"gratuito",beneficios:["Medalhas","Seletiva para IOAA e OLAA","Jornada Espacial"],prestigio:3,beneficio:3,credibilidade:5,chance:5,horas:20,link:"http://www.oba.org.br",status:"parcial",verificado:"2026-11",notas:"Junto com a MOBFOG (foguetes). Boa porta de entrada."},
+ {id:"obq",nome:"OBQ – Olimpíada Brasileira de Química",org:"Associação Brasileira de Química",pais:"Brasil",escopo:"nacional",tipo:"olimpiada",areas:["quimica"],niveis:["EM"],idade:null,ingles:0,publica:null,baixaRenda:false,modalidade:"presencial",meses:[4,5,6],janela:"Via olimpíadas estaduais, geralmente no 1º semestre",duracao:"Fases estaduais + nacional",custoInscricao:0,custo:[0,50],fin:"gratuito",beneficios:["Medalhas","Seletiva para IChO e Olimpíada Ibero-americana"],prestigio:4,beneficio:3,credibilidade:5,chance:3,horas:60,link:"https://www.obquimica.org",status:"a_verificar",verificado:"2026-11",notas:"Calendário depende da coordenação estadual."},
+ {id:"onhb",nome:"ONHB – Olimpíada Nacional em História do Brasil",org:"Unicamp",pais:"Brasil",escopo:"nacional",tipo:"olimpiada",areas:["humanas"],niveis:["EF2","EM"],idade:null,ingles:0,publica:null,baixaRenda:false,modalidade:"online",meses:[4,5],janela:"Inscrição de equipes (3 alunos + professor) em abr–mai",duracao:"6 fases online + final presencial",custoInscricao:0,custo:[0,90],fin:"gratuito",beneficios:["Medalhas","Final presencial na Unicamp","Vagas olímpicas"],prestigio:3,beneficio:3,credibilidade:5,chance:4,horas:40,link:"https://www.olimpiadadehistoria.com.br",status:"parcial",verificado:"2026-11",notas:"Taxa por equipe, com isenção para escolas públicas mediante solicitação."},
+ {id:"obb",nome:"OBB – Olimpíada Brasileira de Biologia",org:"Instituto Butantan / ANBio",pais:"Brasil",escopo:"nacional",tipo:"olimpiada",areas:["biologia","saude"],niveis:["EM"],idade:null,ingles:0,publica:null,baixaRenda:false,modalidade:"online",meses:[1,2],janela:"Inscrição pela escola no início do ano",duracao:"3 fases",custoInscricao:0,custo:[0,30],fin:"gratuito",beneficios:["Medalhas","Seletiva para IBO e OIAB"],prestigio:3,beneficio:3,credibilidade:4,chance:4,horas:50,link:"https://olimpiadasdebiologia.butantan.gov.br",status:"a_verificar",verificado:"2026-11",notas:"Ótima para quem mira medicina e biomedicina."},
+ {id:"obr",nome:"OBR – Olimpíada Brasileira de Robótica",org:"Comissão OBR (CNPq)",pais:"Brasil",escopo:"nacional",tipo:"olimpiada",areas:["engenharia","tecnologia"],niveis:["EF2","EM"],idade:null,ingles:0,publica:null,baixaRenda:false,modalidade:"presencial",meses:[3,4,5],janela:"Inscrições em mar–mai",duracao:"Teórica + prática (regional, estadual, nacional)",custoInscricao:0,custo:[0,1500],fin:"gratuito",beneficios:["Medalhas","Vaga na RoboCup"],prestigio:3,beneficio:3,credibilidade:5,chance:4,horas:80,link:"https://www.obr.org.br",status:"parcial",verificado:"2026-11",notas:"Prova teórica gratuita. A prática exige kit de robótica, que pode custar caro."},
+ {id:"intl-olimp",nome:"Olimpíadas Internacionais de Ciências (IMO, IPhO, IOI, IChO, IBO)",org:"Seletivas das olimpíadas nacionais",pais:"Vários",escopo:"internacional",tipo:"olimpiada",areas:["matematica","fisica","quimica","biologia","tecnologia"],niveis:["EM"],idade:[14,20],ingles:1,publica:null,baixaRenda:false,modalidade:"presencial",meses:[],janela:"Via desempenho nas nacionais (OBM, OBF, OBI, OBQ, OBB)",duracao:"~10 dias",custoInscricao:0,custo:[0,0],fin:"integral",beneficios:["Viagem custeada","Prestígio máximo para admissão no exterior"],prestigio:5,beneficio:5,credibilidade:5,chance:1,horas:800,link:"https://www.imo-official.org",status:"parcial",verificado:"2026-11",notas:"Não há inscrição direta. Exige anos de preparação; custos de viagem geralmente cobertos por patrocínio."},
+ {id:"canguru",nome:"Canguru de Matemática Brasil",org:"Associação Kangourou sans Frontières",pais:"Brasil",escopo:"internacional",tipo:"olimpiada",areas:["matematica"],niveis:["EF2","EM"],idade:null,ingles:0,publica:null,baixaRenda:false,modalidade:"presencial",meses:[1,2,3],janela:"Escola inscreve no 1º trimestre",duracao:"Prova única",custoInscricao:25,custo:[20,30],fin:"pago",beneficios:["Certificado internacional","Medalhas"],prestigio:2,beneficio:2,credibilidade:4,chance:5,horas:10,link:"https://www.cangurudematematicabrasil.com.br",status:"a_verificar",verificado:"2026-11",notas:"Taxa por aluno; valor exato muda a cada ano."},
+ {id:"febrace",nome:"FEBRACE – Feira Brasileira de Ciências e Engenharia",org:"Escola Politécnica da USP",pais:"Brasil",escopo:"nacional",tipo:"feira",areas:["todas"],niveis:["EF2","EM"],idade:null,ingles:0,publica:null,baixaRenda:false,modalidade:"presencial",meses:[9,10,11],janela:"Submissão de projetos no 2º semestre; feira em março",duracao:"Projeto de meses + feira de 1 semana",custoInscricao:0,custo:[0,800],fin:"gratuito",beneficios:["Credenciais para a ISEF (EUA)","Prêmios e bolsas de IC","Rede de pesquisadores"],prestigio:4,beneficio:5,credibilidade:5,chance:3,horas:150,link:"https://febrace.org.br",status:"parcial",verificado:"2026-11",notas:"Finalistas recebem apoio para estadia. Projeto precisa de orientador."},
+ {id:"mostratec",nome:"MOSTRATEC – Mostra Internacional de Ciência e Tecnologia",org:"Fundação Liberato",pais:"Brasil",escopo:"internacional",tipo:"feira",areas:["todas"],niveis:["EM"],idade:null,ingles:0,publica:null,baixaRenda:false,modalidade:"presencial",meses:[6,7,8],janela:"Inscrições no meio do ano; mostra em outubro (Novo Hamburgo/RS)",duracao:"1 semana",custoInscricao:150,custo:[300,2500],fin:"pago",beneficios:["Credenciais para a ISEF e feiras estrangeiras","Prêmios"],prestigio:4,beneficio:4,credibilidade:5,chance:3,horas:150,link:"https://www.mostratec.com.br",status:"a_verificar",verificado:"2026-11",notas:"Custo inclui deslocamento e estadia em Novo Hamburgo."},
+ {id:"isef",nome:"Regeneron ISEF",org:"Society for Science",pais:"EUA",escopo:"internacional",tipo:"feira",areas:["todas"],niveis:["EM"],idade:null,ingles:2,publica:null,baixaRenda:false,modalidade:"presencial",meses:[],janela:"Somente via credencial de feira afiliada (FEBRACE, MOSTRATEC etc.)",duracao:"1 semana em maio",custoInscricao:0,custo:[0,6000],fin:"parcial",beneficios:["Maior feira pré-universitária do mundo","Prêmios de até US$ 75 mil"],prestigio:5,beneficio:5,credibilidade:5,chance:1,horas:300,link:"https://www.societyforscience.org/isef/",status:"parcial",verificado:"2026-11",notas:"A feira credenciadora costuma ajudar com a viagem; confira o que está coberto."},
+ {id:"spaceapps",nome:"NASA International Space Apps Challenge",org:"NASA",pais:"Global",escopo:"internacional",tipo:"hackathon",areas:["tecnologia","engenharia","fisica"],niveis:["EM","GRAD","POS"],idade:null,ingles:1,publica:null,baixaRenda:false,modalidade:"hibrido",meses:[8,9],janela:"Inscrições ago–set; hackathon em outubro",duracao:"48 horas",custoInscricao:0,custo:[0,100],fin:"gratuito",beneficios:["Certificado NASA","Prêmio global (viagem)","Portfólio e rede"],prestigio:3,beneficio:3,credibilidade:5,chance:5,horas:50,link:"https://www.spaceappschallenge.org",status:"parcial",verificado:"2026-11",notas:"Há eventos locais em várias cidades brasileiras e opção 100% online. Menores com autorização."},
+ {id:"technovation",nome:"Technovation Girls",org:"Technovation",pais:"Global",escopo:"internacional",tipo:"hackathon",areas:["tecnologia","negocios"],niveis:["EF2","EM"],idade:[8,18],ingles:1,publica:null,baixaRenda:false,modalidade:"online",meses:[10,11,12,1,2,3],janela:"Inscrição de out a mar; entrega em abril",duracao:"12 semanas",custoInscricao:0,custo:[0,0],fin:"gratuito",beneficios:["Mentoria","Currículo de app e negócio","Final global"],prestigio:3,beneficio:4,credibilidade:5,chance:4,horas:80,link:"https://technovationchallenge.org",status:"parcial",verificado:"2026-11",notas:"Para meninas. Material em português disponível."},
+ {id:"solvetomorrow",nome:"Solve for Tomorrow Brasil",org:"Samsung / Cenpec",pais:"Brasil",escopo:"nacional",tipo:"concurso",areas:["todas"],niveis:["EM"],idade:null,ingles:0,publica:"exclusiva",baixaRenda:false,modalidade:"online",meses:[4,5,6],janela:"Inscrição de equipes no 1º semestre",duracao:"~6 meses",custoInscricao:0,custo:[0,0],fin:"gratuito",beneficios:["Prêmios em equipamentos e dinheiro","Mentoria"],prestigio:2,beneficio:3,credibilidade:4,chance:3,horas:80,link:"https://www.solvefortomorrow.com.br",status:"a_verificar",verificado:"2026-11",notas:"Projetos STEM com impacto na comunidade; equipe com professor."},
+ {id:"criativos",nome:"Desafio Criativos da Escola",org:"Instituto Alana",pais:"Brasil",escopo:"nacional",tipo:"concurso",areas:["sociais","artes","todas"],niveis:["EF2","EM"],idade:null,ingles:0,publica:null,baixaRenda:false,modalidade:"online",meses:[7,8,9],janela:"Inscrições no 2º semestre",duracao:"Inscrição de projeto já realizado",custoInscricao:0,custo:[0,0],fin:"gratuito",beneficios:["Prêmio em dinheiro","Encontro nacional"],prestigio:2,beneficio:3,credibilidade:4,chance:4,horas:20,link:"https://criativosdaescola.com.br",status:"a_verificar",verificado:"2026-11",notas:"Reconhece projetos de transformação social já feitos."},
+ {id:"pjb",nome:"Parlamento Jovem Brasileiro",org:"Câmara dos Deputados",pais:"Brasil",escopo:"nacional",tipo:"lideranca",areas:["humanas","sociais"],niveis:["EM"],idade:[16,22],ingles:0,publica:null,baixaRenda:false,modalidade:"presencial",meses:[5,6,7],janela:"Envio de projeto de lei no 1º semestre",duracao:"1 semana em Brasília",custoInscricao:0,custo:[0,0],fin:"integral",beneficios:["Viagem e hospedagem pagas","Simulação parlamentar"],prestigio:3,beneficio:4,credibilidade:5,chance:2,horas:20,link:"https://www2.camara.leg.br/a-camara/programas-institucionais/experiencias-presenciais/parlamentojovem",status:"a_verificar",verificado:"2026-11",notas:"78 vagas, distribuídas por estado."},
+ {id:"jovemsenador",nome:"Programa Jovem Senador",org:"Senado Federal",pais:"Brasil",escopo:"nacional",tipo:"concurso",areas:["humanas","linguagens"],niveis:["EM"],idade:[0,19],ingles:0,publica:"exclusiva",baixaRenda:false,modalidade:"presencial",meses:[6,7,8],janela:"Concurso de redação no 2º trimestre",duracao:"1 semana em Brasília",custoInscricao:0,custo:[0,0],fin:"integral",beneficios:["Viagem paga","27 vagas (uma por estado)"],prestigio:3,beneficio:4,credibilidade:5,chance:2,horas:15,link:"https://www12.senado.leg.br/jovemsenador",status:"a_verificar",verificado:"2026-11",notas:"Redação inscrita pela escola pública."},
+ {id:"olp",nome:"Olimpíada de Língua Portuguesa",org:"Itaú Social / Cenpec",pais:"Brasil",escopo:"nacional",tipo:"olimpiada",areas:["linguagens"],niveis:["EF2","EM"],idade:null,ingles:0,publica:"exclusiva",baixaRenda:false,modalidade:"presencial",meses:[4,5],janela:"Edições bienais; professor inscreve",duracao:"1 ano letivo",custoInscricao:0,custo:[0,0],fin:"gratuito",beneficios:["Medalhas","Viagem para a final"],prestigio:2,beneficio:3,credibilidade:5,chance:3,horas:20,link:"https://www.escrevendoofuturo.org.br",status:"a_verificar",verificado:"2026-11",notas:"Gêneros: poema, memórias, crônica, documentário, artigo de opinião."},
+ {id:"jovensembaixadores",nome:"Jovens Embaixadores",org:"Embaixada e Consulados dos EUA",pais:"EUA",escopo:"internacional",tipo:"intercambio",areas:["todas","sociais"],niveis:["EM"],idade:[15,18],ingles:2,publica:"exclusiva",baixaRenda:true,modalidade:"presencial",meses:[8,9],janela:"Inscrições costumam ir de ago a início de set; viagem em janeiro",duracao:"~3 semanas",custoInscricao:0,custo:[0,260],fin:"integral",beneficios:["Viagem 100% custeada","Liderança e voluntariado","Rede de ex-participantes"],prestigio:4,beneficio:5,credibilidade:5,chance:1,horas:30,link:"https://www.jovensembaixadores.org.br",status:"parcial",verificado:"2026-11",notas:"Requisitos recentes: 15–18 anos, rede pública, inglês funcional, histórico de voluntariado. Edição 2025 fechou em 03/09. Custo = passaporte."},
+ {id:"uwc",nome:"UWC – United World Colleges",org:"UWC Brasil",pais:"Vários (18 escolas)",escopo:"internacional",tipo:"bolsa_estudo",areas:["todas"],niveis:["EM"],idade:[15,18],ingles:2,publica:null,baixaRenda:false,modalidade:"presencial",meses:[8,9,10,11],janela:"Seleção no 2º semestre para ingresso no ano seguinte",duracao:"2 anos (IB Diploma)",custoInscricao:110,custo:[110,15000],fin:"integral",beneficios:["Bolsa integral ou parcial por necessidade","Diploma IB","Porta para universidades no exterior"],prestigio:5,beneficio:5,credibilidade:5,chance:1,horas:60,link:"https://www.uwc.org.br",status:"a_verificar",verificado:"2026-11",notas:"Para quem está no 1º ou 2º ano do EM. Taxa de inscrição foi de R$ 95–110 em edições anteriores. Bolsa calculada pela renda."},
+ {id:"afs-stem",nome:"AFS Global STEM Academies",org:"AFS Intercultura Brasil",pais:"Vários",escopo:"internacional",tipo:"intercambio",areas:["tecnologia","engenharia","biologia","matematica"],niveis:["EM"],idade:[15,17],ingles:2,publica:null,baixaRenda:false,modalidade:"hibrido",meses:[3,4,5],janela:"Edital varia por edição",duracao:"12 semanas online + 4 semanas presencial",custoInscricao:0,custo:[0,1500],fin:"integral",beneficios:["Bolsas integrais (10 na edição divulgada)","Imersão em China, Egito ou Índia"],prestigio:3,beneficio:5,credibilidade:5,chance:2,horas:40,link:"https://afs.org.br",status:"a_verificar",verificado:"2026-11",notas:"Edição divulgada pela CNN Brasil ofereceu 10 bolsas integrais para 15 a 17,5 anos."},
+ {id:"afs-hs",nome:"AFS Intercâmbio de Ensino Médio",org:"AFS Intercultura Brasil",pais:"40+ países",escopo:"internacional",tipo:"intercambio",areas:["todas","linguagens"],niveis:["EM"],idade:[15,18],ingles:1,publica:null,baixaRenda:false,modalidade:"presencial",meses:[1,2,3,4,5,6,7,8,9,10,11,12],janela:"Fluxo contínuo; partida em jan ou ago",duracao:"Semestre ou ano",custoInscricao:0,custo:[35000,90000],fin:"parcial",beneficios:["Família anfitriã voluntária","Bolsas parciais"],prestigio:3,beneficio:4,credibilidade:5,chance:4,horas:30,link:"https://afs.org.br",status:"parcial",verificado:"2026-11",notas:"Organização sem fins lucrativos. Custo varia muito por país; peça a tabela atualizada."},
+ {id:"pontes",nome:"Pontes para o Mundo",org:"Secretaria de Educação do DF",pais:"Vários",escopo:"internacional",tipo:"intercambio",areas:["todas","linguagens"],niveis:["EM"],idade:[15,18],ingles:1,publica:"exclusiva",baixaRenda:false,modalidade:"presencial",meses:[3,4],janela:"Edital anual da SEEDF",duracao:"Semestre",custoInscricao:0,custo:[0,300],fin:"integral",beneficios:["Intercâmbio custeado pelo governo"],prestigio:3,beneficio:5,credibilidade:5,chance:2,horas:30,link:"https://www.educacao.df.gov.br",status:"a_verificar",verificado:"2026-11",notas:"Somente rede pública do Distrito Federal; exige desempenho escolar mínimo."},
+ {id:"ganheomundo",nome:"Programa Ganhe o Mundo",org:"Governo de Pernambuco",pais:"Vários",escopo:"internacional",tipo:"intercambio",areas:["todas","linguagens"],niveis:["EM"],idade:[14,18],ingles:1,publica:"exclusiva",baixaRenda:false,modalidade:"presencial",meses:[3,4,5],janela:"Edital anual",duracao:"Semestre",custoInscricao:0,custo:[0,300],fin:"integral",beneficios:["Curso de idioma + intercâmbio custeado"],prestigio:3,beneficio:5,credibilidade:5,chance:2,horas:120,link:"https://www.educacao.pe.gov.br",status:"a_verificar",verificado:"2026-11",notas:"Somente rede pública de Pernambuco. Vários estados têm programas parecidos: consulte sua secretaria."},
+ {id:"ismart",nome:"Ismart – Bolsa Talento",org:"Instituto Ismart",pais:"Brasil",escopo:"nacional",tipo:"bolsa_estudo",areas:["todas"],niveis:["EF2"],idade:[12,15],ingles:0,publica:"exclusiva",baixaRenda:true,modalidade:"presencial",meses:[2,3,4],janela:"Inscrições no 1º semestre para 7º e 9º ano",duracao:"Até a universidade",custoInscricao:0,custo:[0,0],fin:"integral",beneficios:["Bolsa em escola particular de ponta","Material, transporte, alimentação","Orientação até a faculdade"],prestigio:4,beneficio:5,credibilidade:5,chance:1,horas:40,link:"https://www.ismart.org.br",status:"a_verificar",verificado:"2026-11",notas:"Cidades atendidas: SP, RJ, BH e região. Confira faixa de renda no edital."},
+ {id:"prep",nome:"Prep Estudar Fora",org:"Fundação Estudar",pais:"Brasil",escopo:"nacional",tipo:"curso_online",areas:["todas"],niveis:["EM"],idade:null,ingles:2,publica:null,baixaRenda:false,modalidade:"online",meses:[3,4,5],janela:"Seleção anual",duracao:"~1 ano",custoInscricao:0,custo:[0,0],fin:"gratuito",beneficios:["Mentoria para aplicação a universidades no exterior","Rede de ex-alunos aprovados"],prestigio:4,beneficio:5,credibilidade:5,chance:2,horas:60,link:"https://www.estudarfora.org.br",status:"a_verificar",verificado:"2026-11",notas:"Ideal para quem mira graduação nos EUA/Europa."},
+ {id:"yygs",nome:"Yale Young Global Scholars",org:"Yale University",pais:"EUA",escopo:"internacional",tipo:"curso_verao",areas:["todas"],niveis:["EM"],idade:[15,18],ingles:3,publica:null,baixaRenda:false,modalidade:"presencial",meses:[9,10,11,12,1],janela:"Early Action 15/10/2026; Regular Decision 06/01/2027 (verão 2027)",duracao:"2 semanas",custoInscricao:560,custo:[3000,55000],fin:"parcial",beneficios:["Ajuda por necessidade de até 100% da anuidade","Algumas bolsas cobrem viagem"],prestigio:4,beneficio:4,credibilidade:5,chance:2,horas:40,link:"https://globalscholars.yale.edu",status:"confirmado",verificado:"2026-11",notas:"Anuidade US$ 7.500 (residencial). Taxa US$ 85 (EA) / US$ 100 (RD), com isenção possível. Em 2026, 1/3 dos admitidos recebeu ajuda; 30+ bolsas cobriram anuidade e viagem."},
+ {id:"rsi",nome:"Research Science Institute (RSI)",org:"MIT / Center for Excellence in Education",pais:"EUA",escopo:"internacional",tipo:"pesquisa",areas:["matematica","fisica","biologia","quimica","engenharia","tecnologia"],niveis:["EM"],idade:[15,18],ingles:3,publica:null,baixaRenda:false,modalidade:"presencial",meses:[11,12,1],janela:"Candidatos internacionais: fim do ano / início do ano seguinte",duracao:"6 semanas",custoInscricao:0,custo:[0,3000],fin:"integral",beneficios:["Pesquisa real em laboratório do MIT","Programa gratuito"],prestigio:5,beneficio:5,credibilidade:5,chance:1,horas:80,link:"https://www.cee.org/programs/research-science-institute",status:"a_verificar",verificado:"2026-11",notas:"~80 vagas no mundo. Passagem pode não ser coberta para internacionais."},
+ {id:"ssp",nome:"Summer Science Program (SSP)",org:"SSP",pais:"EUA",escopo:"internacional",tipo:"pesquisa",areas:["fisica","quimica","biologia"],niveis:["EM"],idade:[15,18],ingles:3,publica:null,baixaRenda:false,modalidade:"presencial",meses:[12,1,2],janela:"Aplicação no inverno, programa em junho–julho",duracao:"5–6 semanas",custoInscricao:0,custo:[3000,40000],fin:"parcial",beneficios:["Projeto de pesquisa (astrofísica, bioquímica, genômica)","Ajuda por necessidade"],prestigio:4,beneficio:4,credibilidade:5,chance:2,horas:40,link:"https://summerscience.org",status:"a_verificar",verificado:"2026-11",notas:"Ajuda financeira por necessidade; confira se cobre internacionais."},
+ {id:"cs50",nome:"CS50x – Introdução à Ciência da Computação",org:"Harvard University (edX)",pais:"Online",escopo:"internacional",tipo:"curso_online",areas:["tecnologia"],niveis:["EM","GRAD","POS"],idade:null,ingles:2,publica:null,baixaRenda:false,modalidade:"online",meses:[1,2,3,4,5,6,7,8,9,10,11,12],janela:"Sempre aberto",duracao:"~10–20 semanas, no seu ritmo",custoInscricao:0,custo:[0,0],fin:"gratuito",beneficios:["Certificado gratuito de Harvard","Projeto final para portfólio"],prestigio:3,beneficio:4,credibilidade:5,chance:5,horas:120,link:"https://cs50.harvard.edu/x/",status:"confirmado",verificado:"2026-11",notas:"Legendas em português. Certificado verificado do edX é pago e opcional."},
+ {id:"icj",nome:"Iniciação Científica Júnior (PIBIC-EM / ICJ)",org:"CNPq e fundações estaduais (FAPESP, FAPEMIG…)",pais:"Brasil",escopo:"nacional",tipo:"pesquisa",areas:["todas"],niveis:["EM"],idade:null,ingles:0,publica:"prioriza",baixaRenda:false,modalidade:"presencial",meses:[3,4,5,6],janela:"Pela universidade parceira; cada instituição tem edital",duracao:"12 meses",custoInscricao:0,custo:[0,0],fin:"integral",beneficios:["Bolsa mensal","Pesquisa com professor universitário","Certificado"],prestigio:3,beneficio:5,credibilidade:5,chance:3,horas:30,link:"https://www.gov.br/cnpq",status:"a_verificar",verificado:"2026-11",notas:"Procure a pró-reitoria de pesquisa da universidade pública mais próxima."},
+ {id:"pibic",nome:"PIBIC – Iniciação Científica",org:"CNPq",pais:"Brasil",escopo:"nacional",tipo:"pesquisa",areas:["todas"],niveis:["GRAD"],idade:null,ingles:0,publica:null,baixaRenda:false,modalidade:"presencial",meses:[4,5,6],janela:"Edital anual de cada universidade",duracao:"12 meses",custoInscricao:0,custo:[0,0],fin:"integral",beneficios:["Bolsa mensal","Base para mestrado"],prestigio:3,beneficio:4,credibilidade:5,chance:3,horas:30,link:"https://www.gov.br/cnpq",status:"parcial",verificado:"2026-11",notas:"Exige orientador e projeto aprovado."},
+ {id:"escala",nome:"Escala Estudantil (AUGM)",org:"Associação de Universidades Grupo Montevidéu",pais:"América do Sul",escopo:"internacional",tipo:"intercambio",areas:["todas"],niveis:["GRAD"],idade:null,ingles:0,publica:null,baixaRenda:false,modalidade:"presencial",meses:[3,4],janela:"Edital da universidade de origem",duracao:"1 semestre",custoInscricao:0,custo:[1000,4000],fin:"parcial",beneficios:["Isenção de taxas","Hospedagem e alimentação pela universidade anfitriã"],prestigio:2,beneficio:4,credibilidade:5,chance:3,horas:30,link:"https://grupomontevideo.org",status:"a_verificar",verificado:"2026-11",notas:"Somente universidades membros (várias federais). Passagem costuma ser por conta do aluno."},
+ {id:"imaginecup",nome:"Microsoft Imagine Cup",org:"Microsoft",pais:"Global",escopo:"internacional",tipo:"hackathon",areas:["tecnologia","negocios"],niveis:["GRAD"],idade:[16,99],ingles:3,publica:null,baixaRenda:false,modalidade:"online",meses:[9,10,11,12,1],janela:"Inscrições no 2º semestre",duracao:"~6 meses",custoInscricao:0,custo:[0,0],fin:"gratuito",beneficios:["Prêmio de até US$ 100 mil","Créditos de nuvem e mentoria"],prestigio:3,beneficio:4,credibilidade:5,chance:2,horas:150,link:"https://imaginecup.microsoft.com",status:"a_verificar",verificado:"2026-11",notas:"Startups estudantis com IA."},
+ {id:"unv",nome:"Voluntariado Online da ONU (UNV)",org:"Programa de Voluntários das Nações Unidas",pais:"Online",escopo:"internacional",tipo:"voluntariado",areas:["sociais","todas"],niveis:["GRAD","POS"],idade:[18,99],ingles:2,publica:null,baixaRenda:false,modalidade:"online",meses:[1,2,3,4,5,6,7,8,9,10,11,12],janela:"Vagas contínuas",duracao:"Semanas a meses",custoInscricao:0,custo:[0,0],fin:"gratuito",beneficios:["Certificado da ONU","Experiência internacional remota"],prestigio:2,beneficio:3,credibilidade:5,chance:3,horas:20,link:"https://app.unv.org",status:"parcial",verificado:"2026-11",notas:"Muitas vagas em português e espanhol."},
+ {id:"fulbright",nome:"Bolsas Fulbright Brasil",org:"Comissão Fulbright",pais:"EUA",escopo:"internacional",tipo:"bolsa_estudo",areas:["todas"],niveis:["POS"],idade:null,ingles:3,publica:null,baixaRenda:false,modalidade:"presencial",meses:[3,4,5,6],janela:"Cada modalidade tem edital próprio",duracao:"Meses a 2 anos",custoInscricao:0,custo:[1500,5000],fin:"integral",beneficios:["Mensalidade, manutenção, passagem e seguro (varia)","Rede de ex-bolsistas"],prestigio:5,beneficio:5,credibilidade:5,chance:2,horas:120,link:"https://fulbright.org.br",status:"parcial",verificado:"2026-11",notas:"Custo inclui testes (TOEFL/GRE) e visto J-1."},
+ {id:"chevening",nome:"Chevening",org:"Governo do Reino Unido",pais:"Reino Unido",escopo:"internacional",tipo:"bolsa_estudo",areas:["todas"],niveis:["POS"],idade:null,ingles:3,publica:null,baixaRenda:false,modalidade:"presencial",meses:[8,9,10,11],janela:"Geralmente de agosto ao início de novembro",duracao:"Mestrado de 1 ano",custoInscricao:0,custo:[1500,4000],fin:"integral",beneficios:["Mensalidade, manutenção, passagem e visto","Liderança"],prestigio:5,beneficio:5,credibilidade:5,chance:1,horas:100,link:"https://www.chevening.org/scholarship/brazil/",status:"parcial",verificado:"2026-11",notas:"Exige 2 anos (2.800 h) de experiência profissional após a graduação."},
+ {id:"daad",nome:"Bolsas DAAD",org:"Serviço Alemão de Intercâmbio Acadêmico",pais:"Alemanha",escopo:"internacional",tipo:"bolsa_estudo",areas:["todas"],niveis:["GRAD","POS"],idade:null,ingles:2,publica:null,baixaRenda:false,modalidade:"presencial",meses:[8,9,10],janela:"Varia por programa; muitos fecham no 2º semestre",duracao:"Meses a 4 anos",custoInscricao:0,custo:[1500,6000],fin:"integral",beneficios:["Mensalidade de manutenção","Seguro e passagem (conforme programa)","Universidades públicas quase sem anuidade"],prestigio:4,beneficio:5,credibilidade:5,chance:2,horas:100,link:"https://www.daad.org.br",status:"parcial",verificado:"2026-11",notas:"Há cursos de verão para graduandos e bolsas de mestrado/doutorado."},
+ {id:"erasmus",nome:"Erasmus Mundus Joint Masters",org:"União Europeia",pais:"Europa",escopo:"internacional",tipo:"bolsa_estudo",areas:["todas"],niveis:["POS"],idade:null,ingles:3,publica:null,baixaRenda:false,modalidade:"presencial",meses:[10,11,12,1],janela:"Cada consórcio tem prazo; a maioria entre out e jan",duracao:"1–2 anos em 2+ países",custoInscricao:0,custo:[1500,5000],fin:"integral",beneficios:["€ 1.400/mês de manutenção","Isenção de taxas","Diploma conjunto"],prestigio:5,beneficio:5,credibilidade:5,chance:2,horas:100,link:"https://www.eacea.ec.europa.eu/scholarships/erasmus-mundus-catalogue_en",status:"parcial",verificado:"2026-11",notas:"Mais de 150 mestrados; é possível aplicar para até 3."},
+ {id:"mext",nome:"Bolsa MEXT (Governo do Japão)",org:"Embaixada e Consulados do Japão",pais:"Japão",escopo:"internacional",tipo:"bolsa_estudo",areas:["todas"],niveis:["EM","GRAD","POS"],idade:[17,35],ingles:2,publica:null,baixaRenda:false,modalidade:"presencial",meses:[4,5],janela:"Embaixada recebe inscrições em abr–mai",duracao:"Graduação, pesquisa ou técnico",custoInscricao:0,custo:[500,2000],fin:"integral",beneficios:["Passagem, mensalidade e manutenção","Curso de japonês"],prestigio:4,beneficio:5,credibilidade:5,chance:2,horas:120,link:"https://www.br.emb-japan.go.jp",status:"parcial",verificado:"2026-11",notas:"Há modalidade de graduação para quem termina o EM (17–24 anos)."},
+ {id:"gks",nome:"Global Korea Scholarship (GKS)",org:"Governo da Coreia do Sul (NIIED)",pais:"Coreia do Sul",escopo:"internacional",tipo:"bolsa_estudo",areas:["todas"],niveis:["EM","GRAD","POS"],idade:[0,40],ingles:2,publica:null,baixaRenda:false,modalidade:"presencial",meses:[2,3,9,10],janela:"Graduação: set–out; pós: fev–mar",duracao:"Curso completo + 1 ano de coreano",custoInscricao:0,custo:[500,2000],fin:"integral",beneficios:["Passagem, mensalidade, manutenção e seguro"],prestigio:4,beneficio:5,credibilidade:5,chance:2,horas:100,link:"https://www.studyinkorea.go.kr",status:"parcial",verificado:"2026-11",notas:"Via embaixada ou diretamente com universidade coreana."},
+ {id:"eiffel",nome:"Bolsa Eiffel de Excelência",org:"Campus France",pais:"França",escopo:"internacional",tipo:"bolsa_estudo",areas:["engenharia","negocios","humanas","sociais","tecnologia"],niveis:["POS"],idade:[0,30],ingles:2,publica:null,baixaRenda:false,modalidade:"presencial",meses:[10,11,12,1],janela:"A universidade francesa indica o candidato (out–jan)",duracao:"Mestrado ou 10 meses de doutorado",custoInscricao:0,custo:[1000,5000],fin:"integral",beneficios:["€ 1.181/mês (mestrado)","Passagem e seguro"],prestigio:4,beneficio:5,credibilidade:5,chance:2,horas:80,link:"https://www.campusfrance.org/en/eiffel-scholarship-program-of-excellence",status:"parcial",verificado:"2026-11",notas:"Não se aplica direto: candidate-se ao mestrado e peça a indicação."},
+ {id:"schwarzman",nome:"Schwarzman Scholars",org:"Universidade Tsinghua",pais:"China",escopo:"internacional",tipo:"bolsa_estudo",areas:["negocios","humanas","sociais","tecnologia"],niveis:["POS"],idade:[18,29],ingles:3,publica:null,baixaRenda:false,modalidade:"presencial",meses:[4,5,6,7,8,9],janela:"Inscrições de abril a setembro",duracao:"Mestrado de 1 ano",custoInscricao:0,custo:[500,3000],fin:"integral",beneficios:["Cobertura total","Rede global de liderança"],prestigio:5,beneficio:5,credibilidade:5,chance:1,horas:120,link:"https://www.schwarzmanscholars.org",status:"parcial",verificado:"2026-11",notas:"Taxa de aprovação ~3%."},
+ {id:"lemann",nome:"Lemann Fellowship",org:"Fundação Lemann",pais:"EUA / Reino Unido",escopo:"internacional",tipo:"bolsa_estudo",areas:["humanas","sociais","negocios","saude"],niveis:["POS"],idade:null,ingles:3,publica:null,baixaRenda:false,modalidade:"presencial",meses:[3,4,5,6],janela:"Após admissão em universidade parceira",duracao:"Mestrado / doutorado",custoInscricao:0,custo:[3000,15000],fin:"parcial",beneficios:["Bolsa parcial ou integral","Rede de líderes comprometidos com o Brasil"],prestigio:4,beneficio:4,credibilidade:5,chance:2,horas:150,link:"https://fundacaolemann.org.br",status:"a_verificar",verificado:"2026-11",notas:"Parceiras: Harvard, Stanford, Columbia, Oxford, entre outras."}
+];
+</script>
+
+<script>
+"use strict";
+const TIPOS={olimpiada:"Olimpíada",feira:"Feira de ciências",hackathon:"Hackathon / desafio",concurso:"Concurso",intercambio:"Intercâmbio",bolsa_estudo:"Bolsa de estudos",curso_verao:"Curso de verão",curso_online:"Curso / mentoria online",pesquisa:"Pesquisa",lideranca:"Liderança",voluntariado:"Voluntariado"};
+const AREAS={matematica:"Matemática",fisica:"Física",quimica:"Química",biologia:"Biologia",saude:"Saúde",tecnologia:"Tecnologia",engenharia:"Engenharia",humanas:"Humanas",linguagens:"Linguagens",sociais:"Impacto social",negocios:"Negócios",artes:"Artes"};
+const FIN={gratuito:"Gratuito",integral:"Bolsa integral",parcial:"Bolsa parcial",pago:"Pago"};
+const NIVEIS={EF2:"Fund. II",EM:"Ensino Médio",GRAD:"Graduação",POS:"Pós"};
+const INGLES=["nenhum","básico","intermediário","avançado"];
+const STATUS={confirmado:["confirmado","good"],parcial:["parcial","warn"],a_verificar:["a verificar","bad"]};
+const OBJ={ // aderência tipo→objetivo (0–1)
+ universidade:{olimpiada:1,feira:.8,concurso:.6,pesquisa:.7,bolsa_estudo:.6,curso_online:.6,hackathon:.5,lideranca:.5,intercambio:.4,curso_verao:.5,voluntariado:.3},
+ exterior:{intercambio:1,bolsa_estudo:1,curso_verao:1,pesquisa:.8,olimpiada:.7,feira:.7,curso_online:.8,hackathon:.5,lideranca:.6,voluntariado:.5,concurso:.4},
+ pesquisa:{pesquisa:1,feira:1,olimpiada:.8,curso_verao:.7,bolsa_estudo:.7,hackathon:.5,curso_online:.5,intercambio:.4,concurso:.4,lideranca:.2,voluntariado:.2},
+ carreira:{hackathon:1,curso_online:1,concurso:.7,feira:.6,pesquisa:.6,bolsa_estudo:.6,olimpiada:.6,intercambio:.5,curso_verao:.5,voluntariado:.5,lideranca:.5},
+ lideranca:{lideranca:1,voluntariado:1,intercambio:.8,concurso:.7,bolsa_estudo:.6,curso_verao:.6,hackathon:.5,feira:.4,olimpiada:.3,pesquisa:.3,curso_online:.3}
+};
+const $=s=>document.querySelector(s);
+const brl=v=>v.toLocaleString("pt-BR",{style:"currency",currency:"BRL",maximumFractionDigits:0});
+const store={get(k,d){try{const v=localStorage.getItem("rota:"+k);return v?JSON.parse(v):d}catch(e){return d}},set(k,v){try{localStorage.setItem("rota:"+k,JSON.stringify(v))}catch(e){}}};
+
+const state={areas:new Set(store.get("areas",["biologia","saude"])),tipos:new Set(),fin:new Set(),esc:new Set(),cmp:store.get("cmp",[])};
+
+function chips(el,map,set,onChange){
+  el.innerHTML="";
+  for(const [k,v] of Object.entries(map)){
+    const c=document.createElement("span");c.className="chip"+(set.has(k)?" on":"");c.textContent=v;c.tabIndex=0;c.setAttribute("role","button");
+    const toggle=()=>{set.has(k)?set.delete(k):set.add(k);c.classList.toggle("on");onChange()};
+    c.onclick=toggle;c.onkeydown=e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();toggle()}};
+    el.appendChild(c);
+  }
+}
+
+function perfil(){return{nivel:$("#pNivel").value,idade:+$("#pIdade").value||0,ingles:+$("#pIngles").value,orc:+$("#pOrc").value||0,obj:$("#pObj").value,publica:$("#pPublica").checked,renda:$("#pRenda").checked,hora:+$("#pHora").value||0,areas:state.areas}}
+
+function avaliar(o,p){
+  const motivos=[];
+  if(p.nivel&&!o.niveis.includes(p.nivel))motivos.push("nível de ensino");
+  if(o.idade&&p.idade&&(p.idade<o.idade[0]||p.idade>o.idade[1]))motivos.push(`idade (${o.idade[0]}–${o.idade[1]>90?"+":o.idade[1]})`);
+  if(o.ingles>p.ingles)motivos.push(`inglês ${INGLES[o.ingles]}`);
+  if(o.publica==="exclusiva"&&!p.publica)motivos.push("exclusivo para escola pública");
+  if(o.custo[0]>p.orc)motivos.push(`custo mínimo ${brl(o.custo[0])}`);
+  const custoMedio=(o.custo[0]+o.custo[1])/2, efetivo=custoMedio+o.horas*p.hora;
+  const areaHit=o.areas.includes("todas")?.7:(p.areas.size?[...p.areas].filter(a=>o.areas.includes(a)).length/Math.min(p.areas.size,o.areas.length):.5);
+  const R=Math.min(1,.6*areaHit+.4*(OBJ[p.obj][o.tipo]??.3));
+  const V=(.45*o.beneficio+.35*o.prestigio+.2*o.credibilidade)/5;
+  const O=o.chance/5;
+  let A=1/(1+efetivo/3000);
+  if((o.publica&&p.publica)||(o.baixaRenda&&p.renda))A=Math.min(1,A+.15);
+  const score=Math.round(100*(.35*R+.25*V+.15*O+.25*A));
+  const cb=10*(V*(.5+.5*O))/(1+Math.log10(1+efetivo/500));
+  return{eleg:!motivos.length,motivos,R,V,O,A,score,cb,custoMedio,efetivo,prazo:proxMes(o)};
+}
+function proxMes(o){ // meses até a próxima janela (0 = aberta agora)
+  if(!o.meses.length)return 99;
+  const m=new Date().getMonth()+1;return Math.min(...o.meses.map(x=>(x-m+12)%12));
+}
+
+function filtrar(){
+  const p=perfil(),q=$("#fBusca").value.trim().toLowerCase();
+  let lista=OPORTUNIDADES.map(o=>({o,a:avaliar(o,p)}));
+  lista=lista.filter(({o,a})=>{
+    if(q&&!(o.nome+" "+o.org+" "+o.pais+" "+o.notas).toLowerCase().includes(q))return false;
+    if(state.tipos.size&&!state.tipos.has(o.tipo))return false;
+    if(state.fin.size&&!state.fin.has(o.fin))return false;
+    if(state.esc.size){
+      const escOk=[...state.esc].filter(e=>e==="nacional"||e==="internacional");
+      const modOk=[...state.esc].filter(e=>e!=="nacional"&&e!=="internacional");
+      if(escOk.length&&!escOk.includes(o.escopo))return false;
+      if(modOk.length&&!modOk.includes(o.modalidade==="hibrido"?"online":o.modalidade)&&!(o.modalidade==="hibrido"&&modOk.includes("presencial")))return false;
+    }
+    if($("#fElig").checked&&!a.eleg)return false;
+    if($("#fPrazo").checked&&a.prazo>2)return false;
+    return true;
+  });
+  const ord=$("#fOrdem").value;
+  const key={score:x=>-x.a.score,cb:x=>-x.a.cb,custo:x=>x.a.custoMedio,prazo:x=>x.a.prazo,prestigio:x=>-x.o.prestigio}[ord];
+  lista.sort((x,y)=>(y.a.eleg-x.a.eleg)||(key(x)-key(y)));
+  return lista;
+}
+
+function barra(label,v){return `<div class="why"><span>${label}</span><div class="bar"><span style="width:${Math.round(v*100)}%"></span></div><span>${Math.round(v*100)}</span></div>`}
+function esc(s){return String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]))}
+
+function render(){
+  const lista=filtrar();
+  $("#count").textContent=`${lista.length} oportunidade${lista.length===1?"":"s"} de ${OPORTUNIDADES.length}`;
+  const box=$("#cards");
+  if(!lista.length){box.innerHTML=`<div class="empty panel">Nada com esses filtros. Tente desmarcar “só o que eu posso fazer” ou aumentar o orçamento.</div>`;return}
+  box.innerHTML=lista.map(({o,a})=>{
+    const st=STATUS[o.status];
+    const custo=o.custo[1]===0?"R$ 0":o.custo[0]===o.custo[1]?brl(o.custo[0]):`${brl(o.custo[0])} – ${brl(o.custo[1])}`;
+    const prazo=a.prazo===99?"via seletivas":a.prazo===0?"costuma estar aberta agora":`abre em ~${a.prazo} ${a.prazo===1?"mês":"meses"}`;
+    const inCmp=state.cmp.includes(o.id);
+    return `<article class="card${a.eleg?"":" inel"}">
+      <div>
+        <h3>${esc(o.nome)}</h3>
+        <div class="org">${esc(o.org)} · ${esc(o.pais)}</div>
+        <div class="tags">
+          <span class="tag">${TIPOS[o.tipo]}</span>
+          <span class="tag ${o.fin==="pago"?"warn":"good"}">${FIN[o.fin]}</span>
+          <span class="tag">${o.modalidade}</span>
+          ${o.niveis.map(n=>`<span class="tag">${NIVEIS[n]}</span>`).join("")}
+          ${o.publica?`<span class="tag good">${o.publica==="exclusiva"?"só escola pública":"prioriza escola pública"}</span>`:""}
+          ${o.ingles?`<span class="tag">inglês ${INGLES[o.ingles]}</span>`:""}
+          <span class="tag ${st[1]}">${st[0]} · ${o.verificado}</span>
+          ${a.prazo<=1?`<span class="tag warn">prazo próximo</span>`:""}
+        </div>
+        ${a.eleg?"":`<div class="tag bad" style="display:inline-block;margin-bottom:6px">Fora do seu perfil: ${a.motivos.join(", ")}</div>`}
+        <div class="meta">
+          <div><b>Custo para você:</b> ${custo}</div>
+          <div><b>Inscrição:</b> ${prazo}</div>
+          <div><b>Duração:</b> ${esc(o.duracao)}</div>
+          <div><b>Preparação:</b> ~${o.horas} h</div>
+        </div>
+        <details><summary>Detalhes e por que está nesta posição</summary>
+          <p><b>Janela:</b> ${esc(o.janela)}</p>
+          <p><b>O que oferece:</b> ${o.beneficios.map(esc).join(" · ")}</p>
+          <p><b>Observações:</b> ${esc(o.notas)}</p>
+          ${barra("Relevância",a.R)}${barra("Valor",a.V)}${barra("Chance",a.O)}${barra("Acessibilidade",a.A)}
+          <p class="muted">Custo efetivo (dinheiro + tempo): ${brl(a.efetivo)}</p>
+        </details>
+      </div>
+      <div class="score">
+        <div class="big">${a.score}</div><div class="lbl">compatibilidade</div>
+        <div class="cb"><b>${a.cb.toFixed(1)}</b>/10</div><div class="lbl">custo-benefício</div>
+      </div>
+      <div class="card-actions">
+        <a class="btn primary" href="${o.link}" target="_blank" rel="noopener">Site oficial</a>
+        <button class="btn" data-cmp="${o.id}">${inCmp?"✓ Na comparação":"Comparar"}</button>
+      </div>
+    </article>`}).join("");
+  box.querySelectorAll("[data-cmp]").forEach(b=>b.onclick=()=>toggleCmp(b.dataset.cmp));
+  renderCmpBar();
+}
+
+function toggleCmp(id){
+  const i=state.cmp.indexOf(id);
+  if(i>=0)state.cmp.splice(i,1);else{if(state.cmp.length>=3)state.cmp.shift();state.cmp.push(id)}
+  store.set("cmp",state.cmp);render();renderCmp();
+}
+function renderCmpBar(){
+  const n=state.cmp.length;$("#cmpCount").textContent=n?`(${n})`:"";
+  $("#cmpBar").classList.toggle("hidden",n<2);$("#cmpBarTxt").textContent=`${n} selecionadas para comparar`;
+}
+function renderCmp(){
+  const p=perfil(),sel=state.cmp.map(id=>OPORTUNIDADES.find(o=>o.id===id)).filter(Boolean);
+  if(!sel.length){$("#cmpTable").innerHTML=`<div class="empty">Nenhuma oportunidade selecionada.</div>`;return}
+  const av=sel.map(o=>avaliar(o,p));
+  const linhas=[
+   ["Organização",o=>esc(o.org)],["Tipo",o=>TIPOS[o.tipo]],["País",o=>esc(o.pais)],
+   ["Compatibilidade",(o,a)=>`<b>${a.score}</b>`],["Custo-benefício",(o,a)=>`<b>${a.cb.toFixed(1)}</b>/10`],
+   ["Elegível para você",(o,a)=>a.eleg?"Sim":"Não: "+a.motivos.join(", ")],
+   ["Custo para você",o=>`${brl(o.custo[0])} – ${brl(o.custo[1])}`],["Financiamento",o=>FIN[o.fin]],
+   ["Inglês",o=>INGLES[o.ingles]],["Duração",o=>esc(o.duracao)],["Preparação",o=>`~${o.horas} h`],
+   ["Janela",o=>esc(o.janela)],["Benefícios",o=>o.beneficios.map(esc).join("<br>")],
+   ["Chance (1–5)",o=>o.chance],["Verificação",o=>STATUS[o.status][0]+" · "+o.verificado],
+   ["Link",o=>`<a href="${o.link}" target="_blank" rel="noopener">site oficial</a>`]];
+  $("#cmpTable").innerHTML=`<table><thead><tr><th></th>${sel.map(o=>`<th style="width:auto;color:var(--text)">${esc(o.nome)} <button class="btn" data-rm="${o.id}" style="padding:2px 8px">×</button></th>`).join("")}</tr></thead><tbody>${linhas.map(([l,f])=>`<tr><th>${l}</th>${sel.map((o,i)=>`<td>${f(o,av[i])}</td>`).join("")}</tr>`).join("")}</tbody></table>`;
+  $("#cmpTable").querySelectorAll("[data-rm]").forEach(b=>b.onclick=()=>toggleCmp(b.dataset.rm));
+}
+
+/* Calculadora */
+const CALC=[
+ ["Taxa de inscrição",0],["Programa / anuidade (parte não coberta)",0],["Passagem aérea ida e volta",5500],
+ ["Passaporte",257],["Visto (taxa consular + SEVIS)",1020],["Seguro saúde internacional",600],
+ ["Hospedagem (total)",0],["Alimentação (total)",1200],["Transporte local",400],["Teste de idioma",1100],["Traduções e documentos",300],["Reserva para imprevistos (10%)","auto"]];
+function renderCalc(){
+  const saved=store.get("calc",{});
+  $("#calc").innerHTML=CALC.map(([l,v],i)=>v==="auto"?"":`<label for="c${i}">${l}</label><input id="c${i}" type="number" min="0" step="50" value="${saved[i]??v}">`).join("");
+  $("#calc").querySelectorAll("input").forEach(inp=>inp.oninput=calc);calc();
+}
+function calc(){
+  const vals={};let sub=0;const parts=[];
+  CALC.forEach(([l,v],i)=>{if(v==="auto")return;const x=+$("#c"+i).value||0;vals[i]=x;sub+=x;if(x)parts.push([l,x])});
+  store.set("calc",vals);
+  const res=Math.round(sub*.1),tot=sub+res;
+  $("#calcTotal").textContent=brl(tot);
+  $("#calcSub").textContent=`${brl(sub)} + ${brl(res)} de reserva para imprevistos. Comece a juntar ${brl(Math.ceil(tot/12))}/mês se faltam 12 meses.`;
+  $("#calcBreak").innerHTML=parts.sort((a,b)=>b[1]-a[1]).map(([l,x])=>barra(l,x/sub).replace(`<span>${Math.round(x/sub*100)}</span></div>`,`<span>${Math.round(x/sub*100)}%</span></div>`)).join("");
+}
+
+/* Export */
+function baixar(nome,conteudo,tipo){const a=document.createElement("a");a.href=URL.createObjectURL(new Blob([conteudo],{type:tipo}));a.download=nome;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000)}
+$("#btnCsv").onclick=()=>{
+  const p=perfil(),cols=["nome","org","pais","tipo","financiamento","custo_min","custo_max","janela","compatibilidade","custo_beneficio","elegivel","status","link"];
+  const q=v=>`"${String(v).replace(/"/g,'""')}"`;
+  const rows=filtrar().map(({o,a})=>[o.nome,o.org,o.pais,TIPOS[o.tipo],FIN[o.fin],o.custo[0],o.custo[1],o.janela,a.score,a.cb.toFixed(1),a.eleg?"sim":"não",o.status,o.link].map(q).join(";"));
+  baixar("rota-oportunidades.csv","﻿"+cols.join(";")+"\n"+rows.join("\n"),"text/csv");
+};
+$("#btnJson").onclick=()=>baixar("rota-oportunidades.json",JSON.stringify(OPORTUNIDADES,null,2),"application/json");
+
+/* Abas */
+document.querySelectorAll("nav.tabs button").forEach(b=>b.onclick=()=>abrir(b.dataset.tab));
+function abrir(t){document.querySelectorAll("nav.tabs button").forEach(x=>x.setAttribute("aria-selected",x.dataset.tab===t));document.querySelectorAll("main>section").forEach(s=>s.classList.toggle("hidden",s.id!=="tab-"+t));if(t==="comparar")renderCmp();store.set("tab",t)}
+$("#cmpGo").onclick=()=>abrir("comparar");
+
+/* Perfil persistente */
+const campos=["pNivel","pIdade","pIngles","pOrc","pObj","pPublica","pRenda","pHora"];
+const pSaved=store.get("perfil",null);
+if(pSaved)campos.forEach(id=>{if(pSaved[id]!==undefined){const el=$("#"+id);el.type==="checkbox"?el.checked=pSaved[id]:el.value=pSaved[id]}});
+function salvarPerfil(){const o={};campos.forEach(id=>{const el=$("#"+id);o[id]=el.type==="checkbox"?el.checked:el.value});store.set("perfil",o);store.set("areas",[...state.areas])}
+campos.forEach(id=>$("#"+id).addEventListener("input",()=>{salvarPerfil();render()}));
+["fBusca","fOrdem","fElig","fPrazo"].forEach(id=>$("#"+id).addEventListener("input",render));
+chips($("#pAreas"),AREAS,state.areas,()=>{salvarPerfil();render()});
+chips($("#fTipos"),TIPOS,state.tipos,render);
+chips($("#fFin"),FIN,state.fin,render);
+chips($("#fEsc"),{nacional:"Nacional",internacional:"Internacional",online:"Online",presencial:"Presencial"},state.esc,render);
+renderCalc();render();abrir(store.get("tab","catalogo"));
+</script>
+</body>
+</html>
